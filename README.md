@@ -10,8 +10,8 @@ A weighted grade calculator, using grades entered into a .txt file. Calculate wh
 
 music.py and id3.py
 -----------
-music.py formats all the files in a directory from "Title - Artist.mp3" to "Artist - Title.mp3", which was useful after the great Spotify HTML5 .mp3 disaster of '13.
-id3.py uses the eyed3 module to add Artist and Song Name information into mp3 files' ID3 tags, based on their naming as "Artist - Title.mp3".
+music.py formats all the files in a directory from ```Title - Artist.mp3``` to ```Artist - Title.mp3```, which was useful after the great Spotify HTML5 .mp3 disaster of '13.
+id3.py uses the eyed3 module to add Artist and Song Name information into mp3 files' ID3 tags, based on their naming as ```Artist - Title.mp3```.
 
 link.py
 -----------
