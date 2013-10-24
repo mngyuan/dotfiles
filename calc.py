@@ -43,7 +43,7 @@ NA indicates not taken yet.
 
 # file to use
 # replace with optparse pls
-GRADEBOOKFILE = "philo2.txt"
+GRADEBOOKFILE = "grade.txt"
 
 
 class GradeItem:
