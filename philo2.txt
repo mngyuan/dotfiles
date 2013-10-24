@@ -1,0 +1,6 @@
+1st midterm	15	37/40
+2nd midterm	15	36/40
+1st paper	20	3/4
+peer review	10	4/4
+2nd paper	20	3.7/4
+final exam	20	NA
