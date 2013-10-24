@@ -1,17 +1,43 @@
+"""
+calc.py
+
+Kevin Lee, 2012
+---------------
+Calculates a weighted grade using
+grades stored in a .txt file and 
+calculates score needed on missing
+assignments to get a desired grade.
+Place a properly formatted grade.txt
+file in the same directory and run
+with:
+
+python2 calc.py
+
+Prints the results out to console. A sample
+grade.txt text is given.
+"""
+
+
 # grade calculator with weighted
 from collections import OrderedDict
 from decimal import * # for no float errors/clean values, like 0.95 instead of 0.94999999999979999
 
-# grade file, tabdelimited, will look as follows:
-# assignmentname    weight/100  score/maxscore
-# where name is a string, weight is a string of an integer 1-100,
-# and score/maxscore is a string of ints or floats
-# ex:
-# midterm #1    20  78/100
-# final exam    20  NA
-#
-# would be the first midterm, worth 20% of the final grade, with a score of 78%.
-# NA indicates not taken yet.
+"""
+grade file, tabdelimited, will look as follows:
+
+assignmentname    weight/100  score/maxscore
+
+where name is a string, weight is a string of an integer 1-100,
+and score/maxscore is a string of ints or floats. Examine the
+given grade.txt for a more complete example.
+
+ex:
+midterm #1    20  78/100
+final exam    20  NA
+
+would be the first midterm, worth 20% of the final grade, with a score of 78%.
+NA indicates not taken yet.
+"""
 
 
 

@@ -1,3 +1,16 @@
+"""
+txtconvert.py
+
+Kevin Lee, 2011
+---------------
+Converts text files between the CRLF and LF line ending
+formats (DOS and UNIX). Run using:
+
+python2 txtconvert.py [-u|-w] infile outfile
+
+From a time before git core.autocrlf.
+"""
+
 from optparse import OptionParser
 
 def main():

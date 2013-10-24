@@ -1,5 +1,7 @@
 """
 music.py
+
+Kevin Lee, 2013
 ---------------
 Take files formatted like:
 
@@ -9,9 +11,14 @@ and swaps to
 
 Artist - Song title.mp3
 
-or vice versa, in side of the directory
+or vice versa, inside of the directory
 this script is placed inside. Files are
-moved to a renamed/ directory
+moved to a renamed/ directory. Originally
+coded after the great Spotify HTML5 .mp3
+fiasco of 2013.
+
+Run with python2 music.py in the directory
+you want to modify.
 """
 
 import os

@@ -1,10 +1,25 @@
+"""
+link.py
+
+Kevin Lee, 2013
+---------------
+Allows you to copy paste HTML links into a
+google spreadsheet, by converting the HTML
+into google doc formulas. Run with:
+
+python2 link.py
+
+Prints the results out to console. A sample
+HTML text is given.
+"""
+
 # lol
 
 # changes some html links to google spreadsheet formulas
 
 from collections import OrderedDict
 
-s = """<p class="p1"><span class="s1"><a href="http://internet-browser-review.toptenreviews.com/">2013 Internet Browser Software Product Comparisons</a></span></p>
+STRINGTOCONVERT = """<p class="p1"><span class="s1"><a href="http://internet-browser-review.toptenreviews.com/">2013 Internet Browser Software Product Comparisons</a></span></p>
 <p class="p1"><span class="s1"><a href="http://www.workroom-productions.com/papers/PVoNT_paper.pdf">A Positive View of Negative Testing</a></span></p>
 <p class="p1"><span class="s1">A Reader <a href="http://trailridgeconsulting.com/files/user-story-primer.pdf">Story</a> Primer</span></p>
 <p class="p1"><span class="s1"><a href="http://en.wikipedia.org/wiki/Comparison_of_web_browsers">Comparison of web browsers</a></span></p>
@@ -25,6 +40,7 @@ linkd = OrderedDict()
 # redundant vars ftw
 atag = '<a href="'
 while 1:
+	s = STRINGTOCONVERT # yuck lol
     urlstart = s.find(atag)+len(atag)
     if s.find(atag) == -1:
         break
