@@ -3,7 +3,6 @@ agorascript
 
 A collection of scripts I've made that may or may not be useful. Currently they're being brushed up, but they should all do their intended function.
 
-===========
 
 calc.py
 -----------
