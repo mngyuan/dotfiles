@@ -16,10 +16,10 @@ function ptgrep {
     pt $1 | grep -A 10 -n $2 | less
 }
 
-# alias for cs61c-db login
-alias sshcs='ssh cs61c-db@hive5.cs.berkeley.edu'
+# alias for cs61c-xx login
+alias sshcs='ssh cs61c-xx@hive5.cs.berkeley.edu'
 # scp files into specified folder
-HIVE='cs61c-db@hive1.cs.berkeley.edu:~'
+HIVE='cs61c-xx@hive1.cs.berkeley.edu:~'
 function scpcs {
     # so $FOLDER turns hw6.py to hw6
 	FOLDER=`echo "$1" | cut -d'.' -f1`
