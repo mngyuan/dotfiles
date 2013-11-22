@@ -3,6 +3,9 @@
 # a bashrc (bash_profile on OSX)
 # also for my 64bit cygwin
 
+# if not interactive, don't setup
+[ -z "$PS1" ] && return
+
 # python aliases
 alias pt='python3 -m doctest -v'
 alias p='python3'
