@@ -41,5 +41,6 @@ PATH=$PATH\:~/bin
 eval $(ssh-agent)
 
 # git aliases
-alias gpull='ssh-add && git pull'
+alias gitpull='ssh-add && git pull'
+alias gitpullr='ssh-add && git pull --rebase'
 
