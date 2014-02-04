@@ -38,7 +38,7 @@ PS1='\[\e[0;33m\]\h:\W \u\$\[\e[m\] '
 PATH=$PATH\:~/bin
 
 # start ssh-agent
-eval $(ssh-agent)
+eval $(ssh-agent) &>/dev/null
 
 # git aliases
 alias gitpull='ssh-add && git pull'
