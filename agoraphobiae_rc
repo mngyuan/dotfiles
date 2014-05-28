@@ -30,7 +30,7 @@ function scpcs {
 }
 
 # pretty lists and view hidden
-alias ll="ls -lasGh"
+alias ll="ls -lAsGh"
 PS1='\[\e[0;33m\]\h:\W \u\$\[\e[m\] '
 
 # add ~/bin to the path
