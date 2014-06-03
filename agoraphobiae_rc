@@ -47,3 +47,5 @@ alias gitpullr='ssh-add && git pull --rebase'
 if [ "$(uname -o)" == "Cygwin" ]; then
 	alias subl="/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
 fi
+# for vim
+stty -ixon
