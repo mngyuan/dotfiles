@@ -11,6 +11,8 @@ set showmatch	" show matching parens
 set ignorecase	" ignore case in search
 set smartcase	" ignore case if all low caps
 				"otherwise, pay attention to caps
+set ssop-=folds		" do not store folds
+
 
 set shiftwidth=4
 set shiftround	" use multiples of shiftwidth with < and >
@@ -54,5 +56,7 @@ map <right> <nop>
 set t_Co=256
 syntax enable
 colorscheme molokai
-
 set guifont=DejaVu\ Sans\ Mono:h10
+au BufRead,BufNewFile *.md set filetype=markdown " syntax highlighting for markdown
+
+set ssop-=options	" do not store global/local vars in sessions
