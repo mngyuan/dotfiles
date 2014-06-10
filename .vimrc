@@ -33,6 +33,9 @@ set undolevels=1000
 set noerrorbells
 				" really stop beeping me
 
+set clipboard=unnamed
+				" use system clipboard
+
 set nobackup
 set noswapfile	" live on the edge man #git
 
@@ -56,7 +59,10 @@ map <right> <nop>
 set t_Co=256
 syntax enable
 colorscheme molokai
-set guifont=DejaVu\ Sans\ Mono:h10
+if has("win32") || has("win16")
+	set guifont=DejaVu\ Sans\ Mono:h10
+else
+	set guifont=DejaVu\ Sans\ Mono:h12
 au BufRead,BufNewFile *.md set filetype=markdown " syntax highlighting for markdown
 
 set ssop-=options	" do not store global/local vars in sessions
