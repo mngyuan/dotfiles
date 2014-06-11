@@ -80,6 +80,11 @@ if has("win32") || has("win16")
 else
 	set guifont=DejaVu\ Sans\ Mono:h12
 endif
-au BufRead,BufNewFile *.md set filetype=markdown " syntax highlighting for markdown
+au BufRead,BufNewFile *.md set filetype=markdown	" highlighting for markdown
+au BufRead,BufNewFile *.ejs set filetype=html		" highlight for ejs
+" prefer 2 tabsize for web/frontend stuff
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 set ssop-=options	" do not store global/local vars in sessions
