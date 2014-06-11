@@ -10,7 +10,13 @@ map <C-e> :NERDTreeToggle<CR>
 
 set backspace=indent,eol,start
 				" allow backspacing over everything
-set nowrap		" don't wrap lines
+
+" set nowrap	" don't wrap lines
+" not crazy person style word wrapping
+set wrap
+set linebreak
+set nolist
+
 set autoindent
 set copyindent	" copy prev indentation when autoindenting
 set number
