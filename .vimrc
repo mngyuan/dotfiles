@@ -1,5 +1,13 @@
 set nocompatible
 
+" plugin fun
+execute pathogen#infect()
+call pathogen#helptags()
+syntax on
+filetype plugin indent on
+" NERDtree
+map <C-e> :NERDTreeToggle<CR>
+
 set backspace=indent,eol,start
 				" allow backspacing over everything
 set nowrap		" don't wrap lines
@@ -40,6 +48,8 @@ set nobackup
 set noswapfile	" live on the edge man #git
 
 set autochdir	" set cwd to cur buffer's loc
+autocmd BufEnter * silent! lcd %:p:h
+				" set cwd to cur buffer's loc, for plugin
 
 " gvim options
 set guioptions-=m " menu bar
@@ -60,7 +70,7 @@ set t_Co=256
 syntax enable
 colorscheme molokai
 if has("win32") || has("win16")
-	set guifont=DejaVu\ Sans\ Mono:h10
+	set guifont=DejaVu\ Sans\ Mono:h8
 else
 	set guifont=DejaVu\ Sans\ Mono:h12
 au BufRead,BufNewFile *.md set filetype=markdown " syntax highlighting for markdown
