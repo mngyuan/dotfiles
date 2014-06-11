@@ -79,6 +79,7 @@ if has("win32") || has("win16")
 	set guifont=DejaVu\ Sans\ Mono:h8
 else
 	set guifont=DejaVu\ Sans\ Mono:h12
+endif
 au BufRead,BufNewFile *.md set filetype=markdown " syntax highlighting for markdown
 
 set ssop-=options	" do not store global/local vars in sessions
