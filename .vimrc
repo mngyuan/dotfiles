@@ -85,7 +85,8 @@ syntax enable
 set background=dark
 colorscheme molokai
 if has("win32") || has("win16")
-	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h8
+	set encoding=utf-8
+	set guifont=DejaVu_Sans_Mono_for_Powerline:h8
 else
 	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 endif
