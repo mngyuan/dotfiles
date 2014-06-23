@@ -7,6 +7,11 @@ syntax on
 filetype plugin indent on
 " NERDtree
 map <C-e> :NERDTreeToggle<CR>
+" gitgutter
+let g:gitgutter_sign_column_always = 1	" always show diff col
+let g:gitgutter_realtime = 1	" constantly show git diff
+" statusline - use with airline
+let g:airline_powerline_fonts = 1	" pretty arrows
 
 set backspace=indent,eol,start
 				" allow backspacing over everything
@@ -72,14 +77,18 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+" coloring and fonts
 set t_Co=256
 syntax enable
+set background=dark
 colorscheme molokai
 if has("win32") || has("win16")
-	set guifont=DejaVu\ Sans\ Mono:h8
+	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h8
 else
-	set guifont=DejaVu\ Sans\ Mono:h12
+	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 endif
+
+" highlighting and syntax
 au BufRead,BufNewFile *.md set filetype=markdown	" highlighting for markdown
 au BufRead,BufNewFile *.ejs set filetype=html		" highlight for ejs
 " prefer 2 tabsize for web/frontend stuff
