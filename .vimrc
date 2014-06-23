@@ -6,7 +6,8 @@ call pathogen#helptags()
 syntax on
 filetype plugin indent on
 " NERDtree
-map <C-e> :NERDTreeToggle<CR>
+map <leader>e :NERDTreeToggle<CR>
+map <leader>r :NERDTreeFind<CR>
 
 set backspace=indent,eol,start
 				" allow backspacing over everything
@@ -43,9 +44,9 @@ nnoremap <esc> :noh<return><esc>
 
 set history=1000
 set undolevels=1000
-" set visualbell	" stop beeping me
-set noerrorbells
-				" really stop beeping me
+" don't beep me
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 set clipboard=unnamed
 				" use system clipboard
