@@ -12,6 +12,7 @@ let g:gitgutter_sign_column_always = 1	" always show diff col
 let g:gitgutter_realtime = 1	" constantly show git diff
 " statusline - use with airline
 let g:airline_powerline_fonts = 1	" pretty arrows
+set laststatus=2	" always show statusline
 
 set backspace=indent,eol,start
 				" allow backspacing over everything
