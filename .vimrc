@@ -98,5 +98,10 @@ au BufRead,BufNewFile *.ejs set filetype=html		" highlight for ejs
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" trailing whitespace
+nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+set list	"see whitespace"
+" set listchars=tab:→\ ,trail:· " the tab arrows are just too ugly
+set listchars=tab:\ \ ,trail:·
 
 set ssop-=options	" do not store global/local vars in sessions
