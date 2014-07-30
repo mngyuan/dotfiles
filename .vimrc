@@ -54,8 +54,8 @@ set undolevels=1000
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-set clipboard=unnamed
-				" use system clipboard
+set clipboard=unnamed,unnamedplus
+				" use system clipboard on win,unix
 
 set nobackup
 set noswapfile	" live on the edge man #git
@@ -84,11 +84,15 @@ set t_Co=256
 syntax enable
 set background=dark
 colorscheme molokai
-if has("win32") || has("win16")
-	set encoding=utf-8
-	set guifont=DejaVu_Sans_Mono_for_Powerline:h8
-else
-	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+if has("gui_running")
+	if has("gui_win32")
+		set encoding=utf-8
+		set guifont=DejaVu_Sans_Mono_for_Powerline:h8
+	elseif has("gui_macvim")
+		set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+	elseif has("gui_gtk2")
+		set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+	endif
 endif
 
 " highlighting and syntax
