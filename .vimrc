@@ -87,7 +87,7 @@ colorscheme molokai
 if has("gui_running")
 	if has("gui_win32")
 		set encoding=utf-8
-		set guifont=DejaVu_Sans_Mono_for_Powerline:h8
+		set guifont=DejaVu_Sans_Mono_for_Powerline:h10
 	elseif has("gui_macvim")
 		set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 	elseif has("gui_gtk2")
