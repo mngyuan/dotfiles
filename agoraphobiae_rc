@@ -61,7 +61,7 @@ function set_bash_prompt() {
 
 	BASH_PROMPT="${PYTHON_VIRTUALENV}${YELLOW}\u@\h:\w${COLOR_NONE}"
 }
-PROMPT_COMMAND='set_bash_prompt ; __git_ps1 "$BASH_PROMPT" "${YELLOW}${PROMPT_SYMBOL}${COLOR_NONE} "'
+PROMPT_COMMAND='update_terminal_cwd; set_bash_prompt ; __git_ps1 "$BASH_PROMPT" "${YELLOW}${PROMPT_SYMBOL}${COLOR_NONE} "'
 
 # add ~/bin to the path
 # this ought to be in bashrc so noninteractive shells get this too
