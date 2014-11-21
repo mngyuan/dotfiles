@@ -20,6 +20,8 @@ Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 " directory exploration
 Plugin 'scrooloose/nerdtree'
+" multiline commenting
+Plugin 'scrooloose/nerdcommenter'
 " git, inside vim, if you can remember the commands
 Plugin 'tpope/vim-fugitive'
 " modern day completion for vim
