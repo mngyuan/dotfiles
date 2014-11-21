@@ -1,3 +1,11 @@
+" phorust vimrc
+" YCM requires compiling, read the repo's readme
+" YCM needs this fix for the MacVim vim exec
+"    install_name_tool -change /System/Library/Frameworks/Python.framework/Versions/2.7/Python /usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/Python MacVim
+" replace MacVim with the path to the MacVim exec being used for vim
+"
+" fix from https://github.com/Valloric/YouCompleteMe/issues/8
+
 set nocompatible
 filetype off
 
@@ -14,6 +22,10 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 " git, inside vim, if you can remember the commands
 Plugin 'tpope/vim-fugitive'
+" modern day completion for vim
+Plugin 'Valloric/YouCompleteMe'
+" vim navigation for tmux
+Bundle 'christoomey/vim-tmux-navigator'
 call vundle#end()
 filetype plugin indent on
 
@@ -22,7 +34,8 @@ syntax on
 map <leader>e :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
 " gitgutter
-let g:gitgutter_sign_column_always = 1	" always show diff col
+" let g:gitgutter_sign_column_always = 1	" always show diff col
+nnoremap <c-g> :GitGutterToggle<CR><c-g>
 let g:gitgutter_realtime = 1	" constantly show git diff
 " statusline - use with airline
 let g:airline_powerline_fonts = 1	" pretty arrows
@@ -68,7 +81,7 @@ set undolevels=1000
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-set clipboard=unnamed,unnamedplus
+" set clipboard=unnamed,unnamedplus
 				" use system clipboard on win,unix
 
 set nobackup
