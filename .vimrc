@@ -1,10 +1,23 @@
 set nocompatible
+filetype off
 
-" plugin fun
-execute pathogen#infect()
-call pathogen#helptags()
-syntax on
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+" powerful, light statusline
+Plugin 'bling/vim-airline'
+" git symbols in the left margin
+Plugin 'airblade/vim-gitgutter'
+" directory exploration
+Plugin 'scrooloose/nerdtree'
+" git, inside vim, if you can remember the commands
+Plugin 'tpope/vim-fugitive'
+call vundle#end()
 filetype plugin indent on
+
+syntax on
 " NERDtree
 map <leader>e :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
@@ -45,7 +58,8 @@ set ruler
 
 set hlsearch	" highlight search terms
 set incsearch	" show search matches while typing
-nnoremap <esc> :noh<return><esc>
+"nnoremap <esc> :noh<return><esc>
+nnoremap <silent> <c-l> :nohls<cr><c-l>
 				" press esc to end highlighting
 
 set history=1000
@@ -79,7 +93,6 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
-" coloring and fonts
 set t_Co=256
 syntax enable
 set background=dark
