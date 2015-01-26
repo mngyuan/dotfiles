@@ -12,6 +12,13 @@ alias p='python3'
 alias pi='python3 -i'
 alias p2='python2.7'
 alias p2t='python2.7 -m doctest'
+# git aliases
+alias gitpull='ssh-add && git pull'
+alias gitpullr='ssh-add && git pull --rebase'
+# pretty lists and view hidden
+alias ll="ls -lAsGh"
+# prefer vim, duh
+export GIT_EDITOR=vim
 
 # looking for errors
 function ptgrep {
@@ -19,9 +26,6 @@ function ptgrep {
     # second param pattern to look for
     pt $1 | grep -A 10 -n $2 | less
 }
-
-# pretty lists and view hidden
-alias ll="ls -lAsGh"
 
 # custom prompt with git branch
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -80,12 +84,6 @@ PATH=$PATH\:~/bin\:$HOME/.local/bin
 
 # start ssh-agent
 eval $(ssh-agent) &>/dev/null
-
-# git aliases
-alias gitpull='ssh-add && git pull'
-alias gitpullr='ssh-add && git pull --rebase'
-# prefer vim, duh
-export GIT_EDITOR=vim
 
 if [[ "$(uname)" == CYGWIN* ]]; then
 	alias subl="/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
