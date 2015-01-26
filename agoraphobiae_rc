@@ -84,6 +84,8 @@ eval $(ssh-agent) &>/dev/null
 # git aliases
 alias gitpull='ssh-add && git pull'
 alias gitpullr='ssh-add && git pull --rebase'
+# prefer vim, duh
+export GIT_EDITOR=vim
 
 if [[ "$(uname)" == CYGWIN* ]]; then
 	alias subl="/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
