@@ -101,6 +101,14 @@ set guioptions-=L " lefthand scroll bar
 
 " solve carpal tunnel
 nnoremap ; :
+" holy fuck why have i been in the dark ages
+set mouse=a
+
+" better tab movement
+nmap <silent> <C-n> :tabnext<CR>
+nmap <silent> <C-p> :tabprev<CR>
+imap <silent> <C-n> <esc><C-n>
+imap <silent> <C-p> <esc><C-p>
 
 " stop bein a god-damned n00b
 map <up> <nop>
