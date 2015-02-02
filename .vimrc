@@ -26,6 +26,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 " modern day completion for vim
 Plugin 'Valloric/YouCompleteMe'
+" fav colors
+Plugin 'tomasr/molokai'
 " vim navigation for tmux
 Bundle 'christoomey/vim-tmux-navigator'
 call vundle#end()
