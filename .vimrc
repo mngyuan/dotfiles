@@ -75,8 +75,9 @@ set ruler
 
 set hlsearch	" highlight search terms
 set incsearch	" show search matches while typing
-"nnoremap <esc> :noh<return><esc>
-nnoremap <silent> <c-l> :nohls<cr><c-l>
+"nnoremap <esc> :noh<return><esc> " this causes errors with drawing... or
+"something
+nnoremap <silent> <c-o> :nohls<cr><c-l>
 				" press esc to end highlighting
 
 set history=1000
