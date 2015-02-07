@@ -30,6 +30,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'tomasr/molokai'
 " vim navigation for tmux
 Bundle 'christoomey/vim-tmux-navigator'
+" automatically detect indentation
+Plugin 'tpope/vim-sleuth'
 call vundle#end()
 filetype plugin indent on
 
@@ -65,12 +67,6 @@ set smartcase	" ignore case if all low caps
 set ssop-=folds		" do not store folds
 
 
-set shiftwidth=4
-set shiftround	" use multiples of shiftwidth with < and >
-set tabstop=4
-set softtabstop=4
-set smarttab	" insert tabs on start of line according to shiftwidth
-				" not tabstop
 set ruler
 
 set hlsearch	" highlight search terms
