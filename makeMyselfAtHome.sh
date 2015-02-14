@@ -21,11 +21,13 @@ mkdir ~/git/dotfiles
 git clone https://github.com/phorust/dotfiles.git ~/git/dotfiles
 if [ -L ~/.tmux.conf]; then
     mv ~/.tmux.conf ~/.tmux.conf.prephorust
+fi
 ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
 echo -e "\n# KL\nsource ~/git/dotfiles/bash_profile" >> ~/.bash_profile
 ln -s ~/git/dotfiles/vimrc ~/.vimrc
 if [ -L ~/.vimrc ]; then
     mv ~/.vimrc ~/.vimrc.prephorust
+fi
 
 function setup_ssh {
 	ssh-keygen
