@@ -2,7 +2,7 @@
 # requires git to exist
 # symlinks vimrc, bash_profile, tmux_conf
 
-if hash gdate 2>/dev/null; then
+if hash apt-get 2>/dev/null; then
 	apt-get install --assume-yes git
 fi
 mkdir ~/git
