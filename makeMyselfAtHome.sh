@@ -19,7 +19,7 @@ if [ -d ~/git/dotfiles ]; then
 fi
 mkdir ~/git/dotfiles
 git clone https://github.com/phorust/dotfiles.git ~/git/dotfiles
-if [ -L ~/.tmux.conf]; then
+if [ -L ~/.tmux.conf ]; then
     mv ~/.tmux.conf ~/.tmux.conf.prephorust
 fi
 ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
