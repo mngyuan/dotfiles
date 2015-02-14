@@ -1,14 +1,42 @@
 #!/bin/bash
+# requires git to exist
+# symlinks vimrc, bash_profile, tmux_conf
 
-apt-get install --assume-yes git
+if hash gdate 2>/dev/null; then
+	apt-get install --assume-yes git
+fi
 mkdir ~/git
-mkdir ~/git/agorascript
-git clone https://github.com/agoraphobiae/agorascript.git ~/git/agorascript
-ln -s ~/git/agorascript/agoraphobiae_rc ~/agoraphobiae_rc
-ln -s ~/git/agorascript/.tmux.conf ~/.tmux.conf
-echo -e "\n# KL\nsource ~/agoraphobiae_rc" >> ~/.bash_profile
-ssh-keygen
-cd ~/git/agorascript && git remote set-url origin git@github.com:agoraphobiae/agorascript.git
+if [ -d "~/git/dotfiles" ]; then
+	# dotfiles already set up?
+	echo "~/git/dotfiles already exists! Delete and start fresh?"
+
+	select yn in "Yes" "No"; do
+	    case $yn in
+		Yes ) rm -rf ~/git/dotfiles; break;;
+		No ) echo "Ok. exiting..."; exit;;
+	    esac
+	done
+fi
+mkdir ~/git/dotfiles
+git clone https://github.com/phorust/dotfiles.git ~/git/dotfiles
+ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
+echo -e "\n# KL\nsource ~/git/dotfiles/bash_profile" >> ~/.bash_profile
+ln -s ~/git/dotfiles/vimrc ~/.vimrc
+
+function setup_ssh {
+	ssh-keygen
+	echo "======= COPY BELOW THIS LINE FOR SETTING UP THIS KEY (on github) ======="
+	cat ~/.ssh/id_rsa.pub
+	echo "======= COPY ABOVE THIS LINE FOR SETTING UP THIS KEY (on github) ======="
+	cd ~/git/dotfiles && git remote set-url origin git@github.com:phorust/dotfiles.git
+}
+echo "Generate an ssh-key?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) setup_ssh; break;;
+        No ) echo "Ok. You may need to update the git remote in ~/git/dotfiles if later you want to commit."; break;;
+    esac
+done
 
 # get git helpers
 mkdir ~/bin
