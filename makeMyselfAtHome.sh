@@ -51,3 +51,7 @@ mkdir ~/bin
 cd ~/bin && curl -O -X GET https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 cd ~/bin && curl -O -X GET https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
+# set up extra vim stuff
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+
