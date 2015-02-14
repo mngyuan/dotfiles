@@ -24,10 +24,10 @@ if [ -L ~/.tmux.conf ]; then
 fi
 ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
 echo -e "\n# KL\nsource ~/git/dotfiles/bash_profile" >> ~/.bash_profile
-ln -s ~/git/dotfiles/vimrc ~/.vimrc
 if [ -L ~/.vimrc ]; then
     mv ~/.vimrc ~/.vimrc.prephorust
 fi
+ln -s ~/git/dotfiles/vimrc ~/.vimrc
 
 function setup_ssh {
 	ssh-keygen
