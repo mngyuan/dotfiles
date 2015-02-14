@@ -6,7 +6,7 @@ if hash gdate 2>/dev/null; then
 	apt-get install --assume-yes git
 fi
 mkdir ~/git
-if [ -d "~/git/dotfiles" ]; then
+if [ -d ~/git/dotfiles ]; then
 	# dotfiles already set up?
 	echo "~/git/dotfiles already exists! Delete and start fresh?"
 
@@ -19,9 +19,13 @@ if [ -d "~/git/dotfiles" ]; then
 fi
 mkdir ~/git/dotfiles
 git clone https://github.com/phorust/dotfiles.git ~/git/dotfiles
+if [ -L ~/.tmux.conf]; then
+    mv ~/.tmux.conf ~/.tmux.conf.prephorust
 ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
 echo -e "\n# KL\nsource ~/git/dotfiles/bash_profile" >> ~/.bash_profile
 ln -s ~/git/dotfiles/vimrc ~/.vimrc
+if [ -L ~/.vimrc ]; then
+    mv ~/.vimrc ~/.vimrc.prephorust
 
 function setup_ssh {
 	ssh-keygen
