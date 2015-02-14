@@ -34,7 +34,6 @@ function setup_ssh {
 	echo "======= COPY BELOW THIS LINE FOR SETTING UP THIS KEY (on github) ======="
 	cat ~/.ssh/id_rsa.pub
 	echo "======= COPY ABOVE THIS LINE FOR SETTING UP THIS KEY (on github) ======="
-	cd ~/git/dotfiles && git remote set-url origin git@github.com:phorust/dotfiles.git
 }
 echo "Generate an ssh-key?"
 select yn in "Yes" "No"; do
@@ -43,6 +42,9 @@ select yn in "Yes" "No"; do
         No ) echo "Ok. You may need to update the git remote in ~/git/dotfiles if later you want to commit."; break;;
     esac
 done
+if [ -f ~/.ssh/id_rsa.pub ]; then
+    cd ~/git/dotfiles && git remote set-url origin git@github.com:phorust/dotfiles.git
+fi
 
 # get git helpers
 mkdir ~/bin
