@@ -9,6 +9,7 @@
 set nocompatible
 filetype off
 
+"***** PLUGINS *****
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -48,20 +49,38 @@ Plugin 'junegunn/seoul256.vim'
 call vundle#end()
 filetype plugin indent on
 
-syntax on
+
+"***** REMAPPINGS *****
+" solve carpal tunnel
+nnoremap ; :
+" stop bein a god-damned n00b
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" better tab movement
+nmap <silent> <C-n> :tabnext<CR>
+nmap <silent> <C-p> :tabprev<CR>
+imap <silent> <C-n> <esc><C-n>
+imap <silent> <C-p> <esc><C-p>
+" trailing whitespace
+nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+" this causes errors with drawing... or something. disabled.
+"nnoremap <esc> :noh<return><esc>	" press esc to end highlighting
+nnoremap <silent> <c-o> :nohls<cr><c-l>	" press <c-o> to end hl
+
+" plugin specific
+nnoremap <c-g> :GitGutterToggle<CR><c-g>
 " NERDtree
 map <leader>e :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
-" gitgutter
-" let g:gitgutter_sign_column_always = 1	" always show diff col
-nnoremap <c-g> :GitGutterToggle<CR><c-g>
-let g:gitgutter_realtime = 1	" constantly show git diff
-" statusline - use with airline
-let g:airline_powerline_fonts = 1	" pretty arrows
-set laststatus=2	" always show statusline
 
-set backspace=indent,eol,start
-				" allow backspacing over everything
+
+"***** BASIC VIM SETTINGS *****
+set laststatus=2		" always show statusline
+
+set backspace=indent,eol,start	" allow backspacing over everything
 
 " set nowrap	" don't wrap lines
 " not crazy person style word wrapping
@@ -76,18 +95,14 @@ set showmatch	" show matching parens
 
 set ignorecase	" ignore case in search
 set smartcase	" ignore case if all low caps
-				"otherwise, pay attention to caps
-set ssop-=folds		" do not store folds
+		"   otherwise, pay attention to caps
+set ssop-=folds	" do not store folds
 
 
 set ruler
 
 set hlsearch	" highlight search terms
 set incsearch	" show search matches while typing
-"nnoremap <esc> :noh<return><esc> " this causes errors with drawing... or
-"something
-nnoremap <silent> <c-o> :nohls<cr><c-l>
-				" press esc to end highlighting
 
 set history=1000
 set undolevels=1000
@@ -95,15 +110,13 @@ set undolevels=1000
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-" set clipboard=unnamed,unnamedplus
-				" use system clipboard on win,unix
+" set clipboard=unnamed,unnamedplus	" use system clipboard on win,unix
 
 set nobackup
-set noswapfile	" live on the edge man #git
+set noswapfile 				" live on the edge man #git
 
-set autochdir	" set cwd to cur buffer's loc
-autocmd BufEnter * silent! lcd %:p:h
-				" set cwd to cur buffer's loc, for plugin
+set autochdir 				" set cwd to cur buffer's loc
+autocmd BufEnter * silent! lcd %:p:h	" set cwd to cur buffer's loc, for plugin
 
 " gvim options
 set guioptions-=m " menu bar
@@ -111,23 +124,12 @@ set guioptions-=T " toolbar
 set guioptions-=r " righthand scroll bar
 set guioptions-=L " lefthand scroll bar
 
-" solve carpal tunnel
-nnoremap ; :
 " holy fuck why have i been in the dark ages
 set mouse=a
 
-" better tab movement
-nmap <silent> <C-n> :tabnext<CR>
-nmap <silent> <C-p> :tabprev<CR>
-imap <silent> <C-n> <esc><C-n>
-imap <silent> <C-p> <esc><C-p>
+set ssop-=options	" do not store global/local vars in sessions
 
-" stop bein a god-damned n00b
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
+"***** FONT AND COLOR *****
 set t_Co=256
 syntax enable
 set background=dark
@@ -150,10 +152,15 @@ au BufRead,BufNewFile *.ejs set filetype=html		" highlight for ejs
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
-" trailing whitespace
-nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 set list	"see whitespace"
 " set listchars=tab:→\ ,trail:· " the tab arrows are just too ugly
 set listchars=tab:\ \ ,trail:·
 
-set ssop-=options	" do not store global/local vars in sessions
+
+"***** PLUGIN SETTINGS *****
+syntax on
+" gitgutter
+" let g:gitgutter_sign_column_always = 1	" always show diff col
+let g:gitgutter_realtime = 1	" constantly show git diff
+" statusline - use with airline
+let g:airline_powerline_fonts = 1	" pretty arrows
