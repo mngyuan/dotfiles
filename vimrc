@@ -26,12 +26,25 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 " modern day completion for vim
 Plugin 'Valloric/YouCompleteMe'
-" fav colors
-Plugin 'tomasr/molokai'
 " vim navigation for tmux
 Bundle 'christoomey/vim-tmux-navigator'
 " automatically detect indentation
 Plugin 'tpope/vim-sleuth'
+" fav colors
+Plugin 'tomasr/molokai'
+Plugin 'benjaminwhite/Benokai'
+Plugin 'vyshane/vydark-vim-color'
+Plugin 'ajh17/Spacegray.vim'
+Plugin 'effkay/argonaut.vim'
+Plugin 'chankaward/vim-railscasts-theme'
+Plugin 'blerins/flattown'
+Plugin 'whatyouhide/vim-gotham'
+Plugin 'sjl/badwolf'
+Plugin 'morhetz/gruvbox'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'jordwalke/flatlandia'
+Plugin 'junegunn/seoul256.vim'
 call vundle#end()
 filetype plugin indent on
 
