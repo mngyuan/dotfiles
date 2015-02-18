@@ -134,7 +134,7 @@ set ssop-=options	" do not store global/local vars in sessions
 set t_Co=256
 syntax enable
 set background=dark
-colorscheme molokai
+colorscheme badwolf
 if has("gui_running")
 	if has("gui_win32")
 		set encoding=utf-8
