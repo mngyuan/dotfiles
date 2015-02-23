@@ -55,3 +55,10 @@ cd ~/bin && curl -O -X GET https://raw.githubusercontent.com/git/git/master/cont
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
+# set up extra tmux stuff
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# get brew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# for tmux-yank and other fancy fancies
+brew install reattach-to-user-namespace
