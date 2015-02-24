@@ -58,7 +58,48 @@ vim +PluginInstall +qall
 # set up extra tmux stuff
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# get brew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# for tmux-yank and other fancy fancies
-brew install reattach-to-user-namespace
+
+if [[ "$(uname)" == Darwin* ]]; then
+    # get brew
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew doctor
+    # for compiling YCM
+    brew install cmake
+    # for better git
+    brew install git
+    # htop > top
+    brew install htop-osx
+    # for YCM python
+    brew install python
+    # brew link --overwrite python # don't link or YCM compile wont work
+    brew install python3
+    brew link --overwrite python3
+    # for j
+    brew install autojump
+    # for mosh
+    brew install mobile-shell
+    # for tmux
+    brew install tmux
+    # for tmux-yank and other fancy fancies
+    brew install reattach-to-user-namespace
+
+    # make keys repeat properly
+    defaults write -g ApplePressAndHoldEnabled -bool false
+    defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+fi
+
+
+# echo post-install stuff
+echo "************** INSTALL COMPLETE **************"
+echo "you're also going to want:"
+echo "Alfred"
+echo "MacVim / alias mvim"
+echo "Seil / capslock remap"
+echo "iTerm2 / zsh"
+echo "ShiftIt (beta)"
+echo "Dropbox"
+echo "Sublime 3"
+echo "Spotify / Chrome / Vox"
+echo "compile YCM"
+echo "NOTE: FOR KEYBOARD CHANGES TO WORK CORRECTLY, LOG OUT AND BACK IN"
