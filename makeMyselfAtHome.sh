@@ -88,8 +88,9 @@ if [[ "$(uname)" == Darwin* ]]; then
 
     # make keys repeat properly
     defaults write -g ApplePressAndHoldEnabled -bool false
-    defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-    defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+    # just kidding, i'll set the minimum allowed because 10/1 is way too fast
+    defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+    defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 fi
 
 
