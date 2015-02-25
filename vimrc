@@ -75,10 +75,11 @@ nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:no
 nnoremap <silent> <c-o> :nohls<cr><c-l>	" press <c-o> to end hl
 
 " plugin specific
-nnoremap <c-g> :GitGutterToggle<CR><c-g>
+" nnoremap <c-g> :GitGutterToggle<CR><c-g>
 " NERDtree
 map <leader>e :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
+map <C-g> :YcmCompleter GoTo<CR>
 
 
 "***** BASIC VIM SETTINGS *****
@@ -169,3 +170,6 @@ syntax on
 let g:gitgutter_realtime = 1	" constantly show git diff
 " statusline - use with airline
 let g:airline_powerline_fonts = 1	" pretty arrows
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+" https://github.com/rasendubi/dotfiles/blob/d534c5fb6bf39f0d9c8668b564ab68b6e3a3eb78/.vim/.ycm_extra_conf.py
+let g:ycm_goto_buffer_command = 'new-tab'
