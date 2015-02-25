@@ -82,6 +82,9 @@ if [[ "$(uname)" == Darwin* ]]; then
     brew install tmux
     # for tmux-yank and other fancy fancies
     brew install reattach-to-user-namespace
+    # for battery in tmux statusline
+    brew tap Goles/battery
+    brew install battery
 
     # make keys repeat properly
     defaults write -g ApplePressAndHoldEnabled -bool false

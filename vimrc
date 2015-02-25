@@ -31,6 +31,8 @@ Plugin 'Valloric/YouCompleteMe'
 Bundle 'christoomey/vim-tmux-navigator'
 " automatically detect indentation
 Plugin 'tpope/vim-sleuth'
+" automatically save a Session.vim, for tmux-resurrect
+Plugin 'tpope/vim-obsession'
 " fav colors
 Plugin 'tomasr/molokai'
 Plugin 'benjaminwhite/Benokai'
@@ -58,6 +60,8 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+" copy to system clipboard
+vmap <C-c> :w !pbcopy<CR><CR>
 
 " better tab movement
 nmap <silent> <C-n> :tabnext<CR>
