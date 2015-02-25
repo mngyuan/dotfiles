@@ -75,10 +75,16 @@ nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:no
 nnoremap <silent> <c-o> :nohls<cr><c-l>	" press <c-o> to end hl
 
 " plugin specific
+" fugitive
+map <leader>gd :Gdiff<CR>
+" press - to stage/reset
+map <leader>gs :Gstatus<CR>
+map <leader>gc :Gcommit<CR>
 " nnoremap <c-g> :GitGutterToggle<CR><c-g>
 " NERDtree
 map <leader>e :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
+" YCM
 map <C-g> :YcmCompleter GoTo<CR>
 
 
