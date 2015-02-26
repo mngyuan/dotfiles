@@ -67,6 +67,8 @@ if [[ "$(uname)" == Darwin* ]]; then
     brew install cmake
     # for better git
     brew install git
+    # node
+    brew install node
     # htop > top
     brew install htop-osx
     # for YCM python
@@ -91,6 +93,12 @@ if [[ "$(uname)" == Darwin* ]]; then
     # just kidding, i'll set the minimum allowed because 10/1 is way too fast
     defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
     defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
+else
+    echo '#!/bin/bash \
+    # For non-OS X systems, a placeholder for the program from \
+    # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard \
+    exec "$@"' >> ~/bin/reattach-to-user-namespace
+    chmod +x ~/bin/reattach-to-user-namespace
 fi
 
 
