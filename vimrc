@@ -62,6 +62,9 @@ map <left> <nop>
 map <right> <nop>
 " copy to system clipboard
 vmap <C-c> :w !pbcopy<CR><CR>
+" reselect after shift
+vnoremap < <gv
+vnoremap > >gv
 
 " better tab movement
 nmap <silent> <C-n> :tabnext<CR>
