@@ -78,8 +78,13 @@ nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:no
 nnoremap <silent> <c-o> :nohls<cr><c-l>	" press <c-o> to end hl
 
 " plugin specific
-" fugitive
+" fugitive / gitgutter
 map <leader>gd :Gdiff<CR>
+map <leader>gb :Gblame<CR>
+map <leader>gg :Gbrowse<CR> " Git Github
+" not gj, gk cuz that takes too long
+nmap <leader>j <Plug>GitGutterNextHunk
+nmap <leader>k <Plug>GitGutterPrevHunk
 " press - to stage/reset
 map <leader>gs :Gstatus<CR>
 map <leader>gc :Gcommit<CR>
@@ -131,7 +136,8 @@ set nobackup
 set noswapfile 				" live on the edge man #git
 
 set autochdir 				" set cwd to cur buffer's loc
-autocmd BufEnter * silent! lcd %:p:h	" set cwd to cur buffer's loc, for plugin
+"autocmd BufEnter * silent! lcd %:p:h	" set cwd to cur buffer's loc,
+					" was for NERDTree but dont need
 
 " gvim options
 set guioptions-=m " menu bar
