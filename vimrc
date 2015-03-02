@@ -138,6 +138,7 @@ set noswapfile 				" live on the edge man #git
 set autochdir 				" set cwd to cur buffer's loc
 "autocmd BufEnter * silent! lcd %:p:h	" set cwd to cur buffer's loc,
 					" was for NERDTree but dont need
+" autochdir and it's friends don't play well with tmux-resurrect...
 
 " gvim options
 set guioptions-=m " menu bar
@@ -185,6 +186,6 @@ syntax on
 let g:gitgutter_realtime = 1	" constantly show git diff
 " statusline - use with airline
 let g:airline_powerline_fonts = 1	" pretty arrows
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/git/dotfiles/ycm_extra_conf.py'
 " https://github.com/rasendubi/dotfiles/blob/d534c5fb6bf39f0d9c8668b564ab68b6e3a3eb78/.vim/.ycm_extra_conf.py
 let g:ycm_goto_buffer_command = 'new-tab'
