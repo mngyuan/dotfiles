@@ -75,7 +75,7 @@ imap <silent> <C-p> <esc><C-p>
 nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " this causes errors with drawing... or something. disabled.
 "nnoremap <esc> :noh<return><esc>	" press esc to end highlighting
-nnoremap <silent> <c-o> :nohls<cr><c-l>	" press <c-o> to end hl
+nnoremap <silent> <leader><esc> :nohls<cr><c-l>	" press \<esc> to end hl
 
 " plugin specific
 " fugitive / gitgutter
