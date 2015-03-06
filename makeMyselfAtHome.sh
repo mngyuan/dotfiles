@@ -59,6 +59,12 @@ vim +PluginInstall +qall
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
+read -d '' reattachscript <<- EOF
+#!/bin/bash
+# For non-OS X systems, a placeholder for the program from
+# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+exec "\$@"
+EOF
 if [[ "$(uname)" == Darwin* ]]; then
     # get brew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -94,10 +100,7 @@ if [[ "$(uname)" == Darwin* ]]; then
     defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
     defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 else
-    echo '#!/bin/bash \
-    # For non-OS X systems, a placeholder for the program from \
-    # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard \
-    exec "$@"' >> ~/bin/reattach-to-user-namespace
+    echo "$reattachscript" > ~/bin/reattach-to-user-namespace
     chmod +x ~/bin/reattach-to-user-namespace
 fi
 
