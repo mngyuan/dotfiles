@@ -80,7 +80,7 @@ PROMPT_COMMAND='update_terminal_cwd; set_bash_prompt ; __git_ps1 "$BASH_PROMPT" 
 
 # add ~/bin to the path
 # this ought to be in bashrc so noninteractive shells get this too
-PATH=$PATH\:~/bin\:$HOME/.local/bin
+PATH="$PATH:$HOME/bin:$HOME/.local/bin"
 
 # start ssh-agent
 SSH_ENV="$HOME/.ssh/environment"
