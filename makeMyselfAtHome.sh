@@ -3,7 +3,7 @@
 # symlinks vimrc, bash_profile, tmux_conf
 
 if hash apt-get 2>/dev/null; then
-	sudo apt-get install --assume-yes git curl vim tmux autojump htop cmake
+	sudo apt-get install --assume-yes git curl vim tmux autojump htop cmake cgdb
 fi
 mkdir ~/git
 if [ -d ~/git/dotfiles ]; then
@@ -97,6 +97,8 @@ if [[ "$(uname)" == Darwin* ]]; then
     # for battery in tmux statusline
     brew tap Goles/battery
     brew install battery
+    # for glorious debugging, except gdb on mac sucks
+    brew install cgdb
 
     # make keys repeat properly
     defaults write -g ApplePressAndHoldEnabled -bool false
@@ -121,4 +123,5 @@ echo "Dropbox"
 echo "Sublime 3"
 echo "Spotify / Chrome / Vox"
 echo "compile YCM"
+echo "sign your gdb for cgdb"
 echo "NOTE: FOR KEYBOARD CHANGES TO WORK CORRECTLY, LOG OUT AND BACK IN"
