@@ -3,7 +3,7 @@
 # symlinks vimrc, bash_profile, tmux_conf
 
 if hash apt-get 2>/dev/null; then
-	apt-get install --assume-yes git
+	sudo apt-get install --assume-yes git curl vim tmux autojump
 fi
 mkdir ~/git
 if [ -d ~/git/dotfiles ]; then
@@ -28,6 +28,10 @@ if [ -L ~/.vimrc ]; then
     mv ~/.vimrc ~/.vimrc.prephorust
 fi
 ln -s ~/git/dotfiles/vimrc ~/.vimrc
+if [ -L ~/.zshrc ]; then
+    mv ~/.zshrc ~/.vimrc.prephorust
+fi
+ln -s ~/git/dotfiles/zshrc ~/.zshrc
 
 function setup_ssh {
 	ssh-keygen
