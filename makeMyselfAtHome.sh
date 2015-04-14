@@ -3,7 +3,7 @@
 # symlinks vimrc, bash_profile, tmux_conf
 
 if hash apt-get 2>/dev/null; then
-	sudo apt-get install --assume-yes git curl vim tmux autojump htop
+	sudo apt-get install --assume-yes git curl vim tmux autojump htop cmake
 fi
 mkdir ~/git
 if [ -d ~/git/dotfiles ]; then
