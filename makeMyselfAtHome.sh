@@ -113,9 +113,9 @@ if [[ "$(uname)" == Darwin* ]]; then
 else
     echo "$reattachscript" > ~/bin/reattach-to-user-namespace
     chmod +x ~/bin/reattach-to-user-namespace
-    echo "$tmuxattachscript" > ~/bin/leek
-    chmod +x ~/bin/leek
 fi
+echo "$tmuxattachscript" > ~/bin/leek
+chmod +x ~/bin/leek
 
 
 # echo post-install stuff
