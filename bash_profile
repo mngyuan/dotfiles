@@ -19,6 +19,10 @@ alias gitpullr='ssh-add && git pull --rebase'
 alias ll="ls -lAsGh"
 # prefer vim, duh
 export GIT_EDITOR=vim
+if [[ "$(uname)" != Darwin* ]]; then
+  alias pbcopy="xclip -selection clipboard"
+  alias pbpaste="xclip -selection clipboard -o"
+fi
 
 # looking for errors
 function ptgrep {

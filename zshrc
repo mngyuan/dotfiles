@@ -79,5 +79,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="tmux -2"
+if [[ "$(uname)" != Darwin* ]]; then
+  alias pbcopy="xclip -selection clipboard"
+  alias pbpaste="xclip -selection clipboard -o"
+fi
+# prefer vim, duh
+export GIT_EDITOR=vim
 
+# attach to tmux after starting zsh
 leek
