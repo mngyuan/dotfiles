@@ -72,7 +72,7 @@ EOF
 # run leek when opening a terminal window
 read -d '' tmuxattachscript <<- EOF
 #!/bin/bash
-tmux attach -t base || tmux new -s base
+if [ -z "$TMUX" ]; then tmux -2 attach -t base || tmux -2 new -s base; fi
 EOF
 if [[ "$(uname)" == Darwin* ]]; then
     # get brew
