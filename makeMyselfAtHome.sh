@@ -69,6 +69,11 @@ read -d '' reattachscript <<- EOF
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 exec "\$@"
 EOF
+# run leek when opening a terminal window
+read -d '' tmuxattachscript <<- EOF
+#!/bin/bash
+tmux attach -t base || tmux new -s base
+EOF
 if [[ "$(uname)" == Darwin* ]]; then
     # get brew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -108,6 +113,8 @@ if [[ "$(uname)" == Darwin* ]]; then
 else
     echo "$reattachscript" > ~/bin/reattach-to-user-namespace
     chmod +x ~/bin/reattach-to-user-namespace
+    echo "$tmuxattachscript" > ~/bin/leek
+    chmod +x ~/bin/leek
 fi
 
 
