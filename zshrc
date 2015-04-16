@@ -85,6 +85,7 @@ if [[ "$(uname)" != Darwin* ]]; then
 fi
 # prefer vim, duh
 export GIT_EDITOR=vim
+export ZDOTDIR=$HOME
 
 # attach to tmux after starting zsh
 leek

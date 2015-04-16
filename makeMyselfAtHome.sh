@@ -29,9 +29,13 @@ if [ -L ~/.vimrc ]; then
 fi
 ln -s ~/git/dotfiles/vimrc ~/.vimrc
 if [ -L ~/.zshrc ]; then
-    mv ~/.zshrc ~/.vimrc.prephorust
+    mv ~/.zshrc ~/.zshrc.prephorust
 fi
 ln -s ~/git/dotfiles/zshrc ~/.zshrc
+if [ -L ~/.zshenv ]; then
+    mv ~/.zshenv ~/.zshenv.prephorust
+fi
+ln -s ~/git/dotfiles/zshenv ~/.zshenv
 
 function setup_ssh {
 	ssh-keygen
