@@ -56,8 +56,10 @@ fi
 
 # get git helpers
 mkdir ~/bin
-cd ~/bin && curl -O -X GET https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-cd ~/bin && curl -O -X GET https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+cd ~/bin && curl -X GET https://raw.githubusercontent.com/git/git/master/contrib/completion/ -o git-prompt.sh
+cd ~/bin && curl -X GET https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o git-completion.bash
+cd ~/bin && curl -X GET https://raw.githubusercontent.com/holman/spark/master/spark -o spark
+chmod +x ~/bin/spark
 
 # set up extra vim stuff
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
