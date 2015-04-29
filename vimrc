@@ -33,6 +33,8 @@ Bundle 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-sleuth'
 " automatically save a Session.vim, for tmux-resurrect
 Plugin 'tpope/vim-obsession'
+" ctrl-p fuzzy searching
+Plugin 'kien/ctrlp.vim'
 " fav colors
 Plugin 'tomasr/molokai'
 Plugin 'benjaminwhite/Benokai'
@@ -68,9 +70,9 @@ vnoremap > >gv
 
 " better tab movement
 nmap <silent> <C-n> :tabnext<CR>
-nmap <silent> <C-p> :tabprev<CR>
+nmap <silent> <C-m> :tabprev<CR>
 imap <silent> <C-n> <esc><C-n>
-imap <silent> <C-p> <esc><C-p>
+imap <silent> <C-m> <esc><C-p>
 " trailing whitespace
 nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " this causes errors with drawing... or something. disabled.
