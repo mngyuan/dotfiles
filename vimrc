@@ -70,9 +70,7 @@ vnoremap > >gv
 
 " better tab movement
 nmap <silent> <C-n> :tabnext<CR>
-nmap <silent> <C-m> :tabprev<CR>
-imap <silent> <C-n> <esc><C-n>
-imap <silent> <C-m> <esc><C-p>
+nmap <silent> <C-b> :tabprev<CR>
 " trailing whitespace
 nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " this causes errors with drawing... or something. disabled.
@@ -191,3 +189,4 @@ let g:airline_powerline_fonts = 1	" pretty arrows
 let g:ycm_global_ycm_extra_conf = '~/git/dotfiles/ycm_extra_conf.py'
 " https://github.com/rasendubi/dotfiles/blob/d534c5fb6bf39f0d9c8668b564ab68b6e3a3eb78/.vim/.ycm_extra_conf.py
 let g:ycm_goto_buffer_command = 'new-tab'
+autocmd CompleteDone * pclose 	" close [Scratch] [Preview] split after completion
