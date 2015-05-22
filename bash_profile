@@ -16,7 +16,7 @@ alias p2t='python2.7 -m doctest'
 alias gitpull='ssh-add && git pull'
 alias gitpullr='ssh-add && git pull --rebase'
 # pretty lists and view hidden
-alias ll="ls -lAsGh"
+alias ll="ls -lsGh"
 # prefer vim, duh
 export GIT_EDITOR=vim
 if [[ "$(uname)" != Darwin* ]]; then
