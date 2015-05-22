@@ -120,6 +120,7 @@ set ssop-=folds	" do not store folds
 
 set ruler
 set scrolloff=5	" always show at least 5 lines above/below cursor
+set scrolljump=5	" scroll by 5 lines at a time
 
 set hlsearch	" highlight search terms
 set incsearch	" show search matches while typing
