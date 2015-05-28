@@ -59,7 +59,8 @@ mkdir ~/bin
 cd ~/bin && curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o git-prompt.sh
 cd ~/bin && curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o git-completion.bash
 cd ~/bin && curl -X GET https://raw.githubusercontent.com/holman/spark/master/spark -o spark
-chmod +x ~/bin/spark
+cd ~/bin && curl https://raw.githubusercontent.com/felipec/git-remote-hg/master/git-remote-hg -o git-remote-hg
+chmod +x ~/bin/*
 
 # set up extra vim stuff
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim

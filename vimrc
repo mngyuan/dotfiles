@@ -35,6 +35,8 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-obsession'
 " ctrl-p fuzzy searching
 Plugin 'kien/ctrlp.vim'
+" mercurial wrapper
+Plugin 'hg::https://bitbucket.org/ludovicchabant/vim-lawrencium'
 " fav colors
 Plugin 'tomasr/molokai'
 Plugin 'benjaminwhite/Benokai'
