@@ -66,6 +66,8 @@ map <left> <nop>
 map <right> <nop>
 " copy to system clipboard
 vmap <C-c> :w !pbcopy<CR><CR>
+vmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+map <leader>v :set paste!<CR>
 " reselect after shift
 vnoremap < <gv
 vnoremap > >gv
