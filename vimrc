@@ -27,6 +27,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 " modern day completion for vim
 Plugin 'Valloric/YouCompleteMe'
+" javascript completion
+Plugin 'marijnh/tern_for_vim'
 " vim navigation for tmux
 Bundle 'christoomey/vim-tmux-navigator'
 " automatically detect indentation
@@ -35,8 +37,8 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-obsession'
 " ctrl-p fuzzy searching
 Plugin 'kien/ctrlp.vim'
-" mercurial wrapper
-Plugin 'hg::https://bitbucket.org/ludovicchabant/vim-lawrencium'
+" signs for hg
+Plugin 'mhinz/vim-signify'
 " fav colors
 Plugin 'tomasr/molokai'
 Plugin 'benjaminwhite/Benokai'
@@ -189,6 +191,9 @@ syntax on
 " gitgutter
 " let g:gitgutter_sign_column_always = 1	" always show diff col
 let g:gitgutter_realtime = 1	" constantly show git diff
+" use signify for everything that isn't git
+let g:signify_vcs_list = [ 'hg', 'perforce', 'svn' ]
+let g:signify_sign_change = "~"
 " statusline - use with airline
 let g:airline_powerline_fonts = 1	" pretty arrows
 let g:ycm_global_ycm_extra_conf = '~/git/dotfiles/ycm_extra_conf.py'
