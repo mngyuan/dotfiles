@@ -29,6 +29,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 " javascript completion
 Plugin 'marijnh/tern_for_vim'
+" javascript type checking
+Plugin 'file:///home/phorust/git/vim-flow'
 " vim navigation for tmux
 Bundle 'christoomey/vim-tmux-navigator'
 " automatically detect indentation
@@ -127,6 +129,7 @@ set ssop-=folds	" do not store folds
 set ruler
 set scrolloff=5	" always show at least 5 lines above/below cursor
 set scrolljump=5	" scroll by 5 lines at a time
+set cc=80
 
 set hlsearch	" highlight search terms
 set incsearch	" show search matches while typing
@@ -200,3 +203,4 @@ let g:ycm_global_ycm_extra_conf = '~/git/dotfiles/ycm_extra_conf.py'
 " https://github.com/rasendubi/dotfiles/blob/d534c5fb6bf39f0d9c8668b564ab68b6e3a3eb78/.vim/.ycm_extra_conf.py
 let g:ycm_goto_buffer_command = 'new-tab'
 autocmd CompleteDone * pclose 	" close [Scratch] [Preview] split after completion
+let g:flow#autoclose = 1				" close quickfix after vim-flow check
