@@ -85,6 +85,10 @@ PROMPT_COMMAND='update_terminal_cwd; set_bash_prompt ; __git_ps1 "$BASH_PROMPT" 
 # add ~/bin to the path
 # this ought to be in bashrc so noninteractive shells get this too
 PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.bin"
+# add linuxbrew to path
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
 # start ssh-agent
 SSH_ENV="$HOME/.ssh/environment"

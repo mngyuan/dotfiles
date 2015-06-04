@@ -85,7 +85,12 @@ if [[ "$(uname)" != Darwin* ]]; then
 fi
 # prefer vim, duh
 export GIT_EDITOR=vim
+export EDITOR=vim
 export ZDOTDIR=$HOME
 
 # attach to tmux after starting zsh
 leek
+# add linuxbrew to path
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
