@@ -84,6 +84,8 @@ nnoremap <silent> <leader>rtw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:no
 " this causes errors with drawing... or something. disabled.
 "nnoremap <esc> :noh<return><esc>	" press esc to end highlighting
 nnoremap <silent> <leader><esc> :nohls<cr><c-l>	" press \<esc> to end hl
+" the CAPS LOCK key as ESC on an apple keyboard sometimes doesn't work so
+imap ;w<CR> <ESC>:w<CR>
 
 " plugin specific
 " fugitive / gitgutter
