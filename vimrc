@@ -30,7 +30,7 @@ Plugin 'Valloric/YouCompleteMe'
 " javascript completion
 Plugin 'marijnh/tern_for_vim'
 " javascript type checking
-Plugin 'file:///home/phorust/git/vim-flow'
+Plugin 'facebook/vim-flow'
 " vim navigation for tmux
 Bundle 'christoomey/vim-tmux-navigator'
 " automatically detect indentation
