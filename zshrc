@@ -48,7 +48,7 @@ ZSH_THEME="robbyrussell"
 plugins=(autojump brew git git-prompt osx colorize colored-man cp tmux tmuxinator sublime)
 
 # User configuration
-
+source ~/git/dotfiles/aliases
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -75,7 +75,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/git/dotfiles/aliases
 
 # attach to tmux after starting zsh
 leek
