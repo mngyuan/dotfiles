@@ -19,10 +19,7 @@ alias gitpullr='ssh-add && git pull --rebase'
 alias ll="ls -lsGh"
 # prefer vim, duh
 export GIT_EDITOR=vim
-if [[ "$(uname)" != Darwin* ]]; then
-  alias pbcopy="xclip -selection clipboard"
-  alias pbpaste="xclip -selection clipboard -o"
-fi
+source ~/git/dotfiles/aliases
 
 # looking for errors
 function ptgrep {
@@ -81,14 +78,6 @@ function set_bash_prompt() {
 	fi
 }
 PROMPT_COMMAND='update_terminal_cwd; set_bash_prompt ; __git_ps1 "$BASH_PROMPT" "${YELLOW}${PROMPT_SYMBOL}${COLOR_NONE} "'
-
-# add ~/bin to the path
-# this ought to be in bashrc so noninteractive shells get this too
-PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.bin"
-# add linuxbrew to path
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
 # start ssh-agent
 SSH_ENV="$HOME/.ssh/environment"

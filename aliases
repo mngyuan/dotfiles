@@ -1,0 +1,22 @@
+# so that vim on ubuntu can pbcopy, since vim's commands open
+# an nonlogin noninteractive shell
+if [[ "$(uname)" != Darwin* ]]; then
+  alias pbcopy="xclip -selection clipboard"
+  alias pbpaste="xclip -selection clipboard -o"
+fi
+
+alias tmux="tmux -2"
+
+# prefer vim, duh
+export GIT_EDITOR=vim
+export EDITOR=vim
+export ZDOTDIR=$HOME
+# add ~/bin to the path
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.bin:$HOME/bin:$HOME.local/bin"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# add linuxbrew to path
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"

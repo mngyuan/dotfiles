@@ -49,9 +49,6 @@ plugins=(autojump brew git git-prompt osx colorize colored-man cp tmux tmuxinato
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$HOME.local/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -78,19 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias tmux="tmux -2"
-if [[ "$(uname)" != Darwin* ]]; then
-  alias pbcopy="xclip -selection clipboard"
-  alias pbpaste="xclip -selection clipboard -o"
-fi
-# prefer vim, duh
-export GIT_EDITOR=vim
-export EDITOR=vim
-export ZDOTDIR=$HOME
+source ~/git/dotfiles/aliases
 
 # attach to tmux after starting zsh
 leek
-# add linuxbrew to path
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
