@@ -20,8 +20,9 @@ if [[ "$(uname)" != Darwin* ]]; then
 fi
 
 alias tmux="tmux -2"
+alias vim="nvim"
 
 # for neovim
-if [[ "$(uname)" != Darwin* ]] && [-e "/etc/redhat-release"]; then
+if [[ "$(uname)" != Darwin* ]] && [[ -e "/etc/redhat-release" ]]; then
   export VIMRUNTIME=/usr/share/vim/vim74
 fi
