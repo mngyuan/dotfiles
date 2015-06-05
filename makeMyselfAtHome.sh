@@ -28,6 +28,7 @@ if [ -L ~/.vimrc ]; then
     mv ~/.vimrc ~/.vimrc.prephorust
 fi
 ln -s ~/git/dotfiles/vimrc ~/.vimrc
+ln -s ~/.vimrc ~/.nvimrc
 if [ -L ~/.zshrc ]; then
     mv ~/.zshrc ~/.zshrc.prephorust
 fi
@@ -111,6 +112,9 @@ if [[ "$(uname)" == Darwin* ]]; then
     brew install battery
     # for glorious debugging, except gdb on mac sucks
     brew install cgdb
+    # nvim has THREADS welcome to 2004
+    brew tap neovim/neovim
+    brew install --HEAD neovim
 
     # make keys repeat properly
     defaults write -g ApplePressAndHoldEnabled -bool false
