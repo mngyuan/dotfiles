@@ -49,7 +49,20 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
   # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
   # Example format: plugins=(rails git textmate ruby lighthouse)
   # Add wisely, as too many plugins slow down shell startup.
-  plugins=(autojump brew git git-prompt osx colorize colored-man cp tmux tmuxinator sublime)
+  plugins=(
+    autojump 
+    brew
+    colored-man
+    colorize
+    cp
+    git
+    git-prompt
+    history-substring-search
+    osx
+    sublime
+    tmux
+    tmuxinator
+  )
 
   # User configuration
   source $ZSH/oh-my-zsh.sh

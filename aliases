@@ -1,5 +1,5 @@
 # prefer vim, duh
-export GIT_EDITOR=vim
+export GIT_EDITOR=nvim
 export EDITOR=vim
 export ZDOTDIR=$HOME
 # add ~/bin to the path
