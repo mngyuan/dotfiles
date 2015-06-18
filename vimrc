@@ -190,6 +190,9 @@ set undodir=~/.vimundo/ " this directory must exist
 
 set ssop-=options	" do not store global/local vars in sessions
 
+" jump to last position on file open
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\""
+
 "***** FONT AND COLOR *****
 set t_Co=256
 syntax enable
