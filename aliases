@@ -25,4 +25,6 @@ alias tmux="tmux -2"
 # for neovim
 if [[ "$(uname)" != Darwin* ]] && [[ -e "/etc/redhat-release" ]]; then
   export VIMRUNTIME=/usr/share/vim/vim74
+else
+  alias vim="nvim" # not working on my centos box yet
 fi
