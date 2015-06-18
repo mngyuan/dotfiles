@@ -31,6 +31,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
 " javascript type checking
 Plugin 'facebook/vim-flow'
+" javascript coloring and folding
+Plugin 'vim-javascript'
 " vim navigation for tmux
 Bundle 'christoomey/vim-tmux-navigator'
 " automatically detect indentation
@@ -41,6 +43,12 @@ Plugin 'tpope/vim-obsession'
 Plugin 'kien/ctrlp.vim'
 " signs for hg
 Plugin 'mhinz/vim-signify'
+" search should show Match n of N
+Plugin 'henrik/vim-indexed-search.git'
+" align things nicely
+Plugin 'godlygeek/tabular'
+" nice code review
+Plugin 'phleet/vim-arcanist'
 " fav colors
 Plugin 'tomasr/molokai'
 Plugin 'benjaminwhite/Benokai'
@@ -92,18 +100,30 @@ imap ;w<CR> <ESC>:w<CR>
 map <leader>gd :Gdiff<CR>
 map <leader>gb :Gblame<CR>
 map <leader>gg :Gbrowse<CR> " Git Github
+" vim-signify literally takes 1 whole second on save
+map <leader>s :SignifyToggle<CR>
 " not gj, gk cuz that takes too long
 nmap <leader>j <Plug>GitGutterNextHunk
 nmap <leader>k <Plug>GitGutterPrevHunk
 " press - to stage/reset
 map <leader>gs :Gstatus<CR>
 map <leader>gc :Gcommit<CR>
+" fix quickfix things
+map <leader>h :cp<CR>
+map <leader>l :cn<CR>
 " nnoremap <c-g> :GitGutterToggle<CR><c-g>
 " NERDtree
 map <leader>e :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
 " YCM
 map <C-g> :YcmCompleter GoTo<CR>
+" visually align things
+vmap <leader>a= :Tabularize /=<CR>
+vmap <leader>a: :Tabularize /:<CR>
+vmap <leader>a\| :Tabularize /\|<CR>
+vmap <leader>a" :Tabularize /"<CR>
+vmap <leader>a< :Tabularize /<<CR>
+vmap <leader>a/ :Tabularize //<CR>
 
 
 "***** BASIC VIM SETTINGS *****
@@ -180,10 +200,15 @@ if has("gui_running")
 		set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
 	endif
 endif
+" | as cursor in insert mode instead of block
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 " highlighting and syntax
-au BufRead,BufNewFile *.md set filetype=markdown	" highlighting for markdown
-au BufRead,BufNewFile *.ejs set filetype=html		" highlight for ejs
+au! BufRead,BufNewFile *.md   set filetype=markdown	" highlighting for markdown
+au! BufRead,BufNewFile *.ejs  set filetype=html		  " highlight for ejs
+au! BufRead,BufNewFile *.txt  set filetype=text
+au! BufRead,BufNewFile README set filetype=text
 " prefer 2 tabsize for web/frontend stuff
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -199,6 +224,8 @@ syntax on
 " let g:gitgutter_sign_column_always = 1	" always show diff col
 let g:gitgutter_realtime = 1	" constantly show git diff
 " use signify for everything that isn't git
+" except it's fucking a slow piece of shit
+let g:signify_disable_by_default = 1
 let g:signify_vcs_list = [ 'hg', 'perforce', 'svn' ]
 let g:signify_sign_change = "~"
 " statusline - use with airline
