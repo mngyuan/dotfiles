@@ -62,6 +62,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
     sublime
     tmux
     tmuxinator
+    zsh-syntax-highlighting # has to be last
   )
 
   # User configuration

@@ -55,6 +55,15 @@ if [ -f ~/.ssh/id_rsa.pub ]; then
     cd ~/git/dotfiles && git remote set-url origin git@github.com:phorust/dotfiles.git
 fi
 
+# set up oh-my-zsh and extra zsh stuff
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins
+# set up extra vim stuff
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+# set up extra tmux stuff
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # get git helpers
 mkdir ~/bin
 cd ~/bin && curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o git-prompt.sh
@@ -62,14 +71,6 @@ cd ~/bin && curl https://raw.githubusercontent.com/git/git/master/contrib/comple
 cd ~/bin && curl -X GET https://raw.githubusercontent.com/holman/spark/master/spark -o spark
 cd ~/bin && curl https://raw.githubusercontent.com/felipec/git-remote-hg/master/git-remote-hg -o git-remote-hg
 chmod +x ~/bin/*
-
-# set up extra vim stuff
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-mkdir ~/.vimundo/
-vim +PluginInstall +qall
-
-# set up extra tmux stuff
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 read -d '' reattachscript <<- EOF
