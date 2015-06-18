@@ -67,6 +67,11 @@ Plugin 'junegunn/seoul256.vim'
 call vundle#end()
 filetype plugin indent on
 
+" fb
+if filereadable("/home/engshare/admin/scripts/vim/fbvim.vim")
+	source /home/engshare/admin/scripts/vim/fbvim.vim
+	source /home/engshare/admin/scripts/vim/biggrep.vim
+endif
 
 "***** REMAPPINGS *****
 " solve carpal tunnel
