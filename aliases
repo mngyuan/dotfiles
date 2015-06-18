@@ -20,7 +20,7 @@ if [[ "$(uname)" != Darwin* ]]; then
 fi
 
 alias tmux="tmux -2"
-alias vim="nvim"
+#alias vim="nvim"
 
 # for neovim
 if [[ "$(uname)" != Darwin* ]] && [[ -e "/etc/redhat-release" ]]; then
