@@ -65,6 +65,7 @@ chmod +x ~/bin/*
 
 # set up extra vim stuff
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+mkdir ~/.vimundo/
 vim +PluginInstall +qall
 
 # set up extra tmux stuff

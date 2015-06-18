@@ -160,6 +160,8 @@ set guioptions-=L " lefthand scroll bar
 
 " holy fuck why have i been in the dark ages
 set mouse=a
+set undofile
+set undodir=~/.vimundo/ " this directory must exist
 
 set ssop-=options	" do not store global/local vars in sessions
 
