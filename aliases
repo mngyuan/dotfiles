@@ -12,6 +12,9 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
+# fb
+export ADMIN_SCRIPTS=~/../engshare/admin/scripts
+
 # so that vim on ubuntu can pbcopy, since vim's commands open
 # an nonlogin noninteractive shell
 if [[ "$(uname)" != Darwin* ]]; then
