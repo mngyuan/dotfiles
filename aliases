@@ -15,9 +15,11 @@ export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 export PATH="$PATH:$HOME/npm/bin"
 
 # fb
-export ADMIN_SCRIPTS=~/../engshare/admin/scripts
-export PATH="$PATH:/opts/local/bin:/usr/facebook/ops/scripts:/usr/facebook/scripts"
-export PATH="$PATH:/home/engshare/third-party2/node/0.12.1/gcc-4.8.1-glibc-2.17/6f3b8b5/bin"
+if [ -d "~/../engshare" ]; then
+  export ADMIN_SCRIPTS=~/../engshare/admin/scripts
+  export PATH="$PATH:/opts/local/bin:/usr/facebook/ops/scripts:/usr/facebook/scripts"
+  export PATH="$PATH:/home/engshare/third-party2/node/0.12.1/gcc-4.8.1-glibc-2.17/6f3b8b5/bin"
+fi
 
 # so that vim on ubuntu can pbcopy, since vim's commands open
 # an nonlogin noninteractive shell

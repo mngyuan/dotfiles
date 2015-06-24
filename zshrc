@@ -1,5 +1,7 @@
 source ~/git/dotfiles/aliases
-source "$ADMIN_SCRIPTS"/master.zshrc
+if [ -n "$ADMINSCRIPTS" ]; then
+  source "$ADMIN_SCRIPTS"/master.zshrc
+fi
 # oh-my-zsh options below
 if [[ -d "$HOME/.oh-my-zsh" ]]; then
   # Path to your oh-my-zsh installation.
