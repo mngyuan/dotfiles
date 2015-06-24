@@ -11,9 +11,13 @@ export PATH="$PATH:$HOME/.bin:$HOME/bin:$HOME.local/bin"
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+# add a local npm
+export PATH="$PATH:$HOME/npm/bin"
 
 # fb
 export ADMIN_SCRIPTS=~/../engshare/admin/scripts
+export PATH="$PATH:/opts/local/bin:/usr/facebook/ops/scripts:/usr/facebook/scripts"
+export PATH="$PATH:/home/engshare/third-party2/node/0.12.1/gcc-4.8.1-glibc-2.17/6f3b8b5/bin"
 
 # so that vim on ubuntu can pbcopy, since vim's commands open
 # an nonlogin noninteractive shell
