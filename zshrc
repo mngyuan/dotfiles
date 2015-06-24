@@ -56,12 +56,12 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
     colorize
     cp
     git
-    git-prompt
     history-substring-search
     osx
     sublime
     tmux
     tmuxinator
+    zsh-completions
     zsh-syntax-highlighting # has to be last
   )
 
@@ -92,6 +92,24 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
   # Example aliases
   # alias zshconfig="mate ~/.zshrc"
   # alias ohmyzsh="mate ~/.oh-my-zsh"
+  local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
+  PROMPT='%{$reset_color%}%{$FG[248]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} ${ret_status}%{$fg_bold[green]%}%p % %{$reset_color%}'
+  # nice git rprompt: 8+3-2*
+  #setopt PROMPT_SUBST
+  #function get_rprompt() {
+    #RPROMPT_GIT_SHORTSTAT="$(git diff --shortstat --cached)"
+    #RPROMPT_GIT_ADDITIONS="$(echo $RPROMPT_GIT_SHORTSTAT | awk '{print $4}')"
+    #RPROMPT_GIT_DELETIONS="$(echo $RPROMPT_GIT_SHORTSTAT | awk '{print $6}')"
+    #RPROMPT_GIT_FILESCHAN="$(echo $RPROMPT_GIT_SHORTSTAT | awk '{print $1}')"
+    #RPROMPT="(%{$FG[010]%}$RPROMPT_GIT_ADDITIONS+%{$FG[009]%}$RPROMPT_GIT_DELETIONS-%{$FG[011]%}$RPROMPT_GIT_FILESCHAN*%{$reset_color%})"
+    #return RPROMPT;
+  #}
+  #RPROMPT='$(get_rprompt)'
+
+  ZSH_THEME_GIT_PROMPT_PREFIX="⎇ (%{$FG[045]%}"
+  ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+  ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
+  ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 fi
 
 # attach to tmux after starting zsh
