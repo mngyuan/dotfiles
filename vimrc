@@ -128,7 +128,7 @@ vmap <leader>a: :Tabularize /:<CR>
 vmap <leader>a\| :Tabularize /\|<CR>
 vmap <leader>a" :Tabularize /"<CR>
 vmap <leader>a< :Tabularize /<<CR>
-vmap <leader>a/ :Tabularize //<CR>
+vmap <leader>a/ :Tabularize / \/\/<CR>
 
 
 "***** BASIC VIM SETTINGS *****
