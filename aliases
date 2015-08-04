@@ -4,11 +4,11 @@ export EDITOR=vim
 export ZDOTDIR=$HOME
 # add ~/bin to the path
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="$PATH:$HOME/.bin:$HOME/bin:$HOME.local/bin"
+export PATH="$PATH:$HOME/.bin:$HOME/bin:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # add linuxbrew to path
-export PATH="$HOME/.linuxbrew/bin:$PATH"
+export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 # add a local npm
@@ -20,6 +20,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 if [ -d ~/../engshare ]; then
   export ADMIN_SCRIPTS=~/../engshare/admin/scripts
   export PATH="$PATH:/opts/local/bin:/usr/facebook/ops/scripts:/usr/facebook/scripts"
+  export PATH="$PATH:~/.rbenv/shims:/usr/facebook/scripts/db:/usr/local/sbin:/mnt/vol/engshare/svnroot/tfb/trunk/www/scripts/bin:/mnt/vol/engshare/admin/scripts/hg:/mnt/vol/engshare/admin/scripts/git:/mnt/vol/engshare/admin/scripts:~/www/scripts/bin"
   export PATH="$PATH:/home/engshare/third-party2/node/0.12.1/gcc-4.8.1-glibc-2.17/6f3b8b5/bin"
 fi
 
