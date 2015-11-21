@@ -40,3 +40,8 @@ if [[ "$(uname)" != Darwin* ]] && [[ -e "/etc/redhat-release" ]]; then
 else
   alias vim="nvim" # not working on my centos box yet
 fi
+
+# for android dev
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+

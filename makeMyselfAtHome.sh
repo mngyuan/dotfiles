@@ -28,24 +28,6 @@ if [ -d ~/git/dotfiles ]; then
 fi
 mkdir ~/git/dotfiles
 git clone https://github.com/phorust/dotfiles.git ~/git/dotfiles
-if [ -L ~/.tmux.conf ]; then
-    mv ~/.tmux.conf ~/.tmux.conf.prephorust
-fi
-ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
-echo -e "\n# KL\nsource ~/git/dotfiles/bash_profile" >> ~/.bash_profile
-if [ -L ~/.vimrc ]; then
-    mv ~/.vimrc ~/.vimrc.prephorust
-fi
-ln -s ~/git/dotfiles/vimrc ~/.vimrc
-ln -s ~/.vimrc ~/.nvimrc
-if [ -L ~/.zshrc ]; then
-    mv ~/.zshrc ~/.zshrc.prephorust
-fi
-ln -s ~/git/dotfiles/zshrc ~/.zshrc
-if [ -L ~/.zshenv ]; then
-    mv ~/.zshenv ~/.zshenv.prephorust
-fi
-ln -s ~/git/dotfiles/zshenv ~/.zshenv
 
 function setup_ssh {
 	ssh-keygen
@@ -72,6 +54,27 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 # set up extra tmux stuff
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# now, lets hook up our actual dotfiles
+if [ -L ~/.tmux.conf ]; then
+    mv ~/.tmux.conf ~/.tmux.conf.prephorust
+fi
+ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
+echo -e "\n# KL\nsource ~/git/dotfiles/bash_profile" >> ~/.bash_profile
+if [ -L ~/.vimrc ]; then
+    mv ~/.vimrc ~/.vimrc.prephorust
+fi
+ln -s ~/git/dotfiles/vimrc ~/.vimrc
+ln -s ~/.vimrc ~/.nvimrc
+if [ -L ~/.zshrc ]; then
+    mv ~/.zshrc ~/.zshrc.prephorust
+fi
+ln -s ~/git/dotfiles/zshrc ~/.zshrc
+if [ -L ~/.zshenv ]; then
+    mv ~/.zshenv ~/.zshenv.prephorust
+fi
+ln -s ~/git/dotfiles/zshenv ~/.zshenv
+
 
 # get git helpers
 mkdir ~/bin
