@@ -110,8 +110,10 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
 
   ZSH_THEME_GIT_PROMPT_PREFIX="⎇ (%{$FG[045]%}"
   ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-  ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
-  ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+  ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%})
+%{$fg[yellow]%}✗%{$reset_color%}"
+  ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})
+%{$reset_color%}"
 fi
 
 # attach to tmux after starting zsh
