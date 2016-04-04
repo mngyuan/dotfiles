@@ -35,11 +35,11 @@ alias tmux="tmux -2"
 #alias vim="nvim"
 
 # for neovim
-if [[ "$(uname)" != Darwin* ]] && [[ -e "/etc/redhat-release" ]]; then
-  export VIMRUNTIME=/usr/share/vim/vim74
-else
-  alias vim="nvim" # not working on my centos box yet
-fi
+# if [[ "$(uname)" != Darwin* ]] && [[ -e "/etc/redhat-release" ]]; then
+#   export VIMRUNTIME=/usr/share/vim/vim74
+# else
+#   alias vim="nvim" # not working on my centos box yet
+# fi
 
 # for android dev
 export ANDROID_HOME="$HOME/Library/Android/sdk"
