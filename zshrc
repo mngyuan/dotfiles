@@ -58,13 +58,14 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
     colorize
     cp
     git
-    history-substring-search
     osx
     sublime
     tmux
     tmuxinator
+    zsh-autosuggestions
     zsh-completions
     zsh-syntax-highlighting # has to be last
+    history-substring-search # has to be after syntax highlighting
   )
 
   # User configuration
