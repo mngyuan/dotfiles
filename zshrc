@@ -95,7 +95,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
   # alias zshconfig="mate ~/.zshrc"
   # alias ohmyzsh="mate ~/.oh-my-zsh"
   local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
-  PROMPT='%{$reset_color%}%{$FG[238]%}%m %{$FG[248]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} ${ret_status}%{$fg_bold[green]%}%p % %{$reset_color%}'
+  PROMPT='%{$reset_color%}%{$FG[248]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} ${ret_status}%{$fg_bold[green]%}%p % %{$reset_color%}'
   # nice git rprompt: 8+3-2*
   #setopt PROMPT_SUBST
   #function get_rprompt() {
