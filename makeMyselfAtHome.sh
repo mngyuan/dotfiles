@@ -89,7 +89,7 @@ read -d '' reattachscript <<- EOF
 #!/bin/bash
 # For non-OS X systems, a placeholder for the program from
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
-exec "\$@"
+exec \$@
 EOF
 # run leek when opening a terminal window
 read -d '' tmuxattachscript <<- EOF
