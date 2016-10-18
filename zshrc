@@ -141,4 +141,4 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
 fi
 
 # attach to tmux after starting zsh
-leek
+# leek
