@@ -24,6 +24,11 @@ if [ -d ~/../engshare ]; then
   export PATH="$PATH:/home/engshare/third-party2/node/0.12.1/gcc-4.8.1-glibc-2.17/6f3b8b5/bin"
 fi
 
+# nuclide dev
+export PATH="/opt/facebook/nuclide/node-v5.10.0-darwin-x64/bin:$PATH"
+# osmeta dev
+export PATH="$PATH:$HOME/devtools"
+
 # so that vim on ubuntu can pbcopy, since vim's commands open
 # an nonlogin noninteractive shell
 if [[ "$(uname)" != Darwin* ]]; then

@@ -2,6 +2,29 @@ source ~/git/dotfiles/aliases
 if [ -n "$ADMINSCRIPTS" ]; then
   source "$ADMIN_SCRIPTS"/master.zshrc
 fi
+
+# save a shitload of lines
+HISTSIZE=130000 SAVEHIST=130000
+# vi mode
+bindkey -v
+# make ctrl-h and backspace work after exiting command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+# incremental search backwards with vi mode
+bindkey "^R" history-incremental-search-backward
+# allow ctrl-a and ctrl-e to move to beginning/end of line
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+
+function vi_mode_prompt_info() {
+  echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
+}
+
+# define right prompt, if it wasn't defined by a theme
+if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
+  RPS1='$(vi_mode_prompt_info)'
+fi
+
 # oh-my-zsh options below
 if [[ -d "$HOME/.oh-my-zsh" ]]; then
   # Path to your oh-my-zsh installation.
@@ -52,7 +75,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
   # Example format: plugins=(rails git textmate ruby lighthouse)
   # Add wisely, as too many plugins slow down shell startup.
   plugins=(
-    autojump 
+    autojump
     brew
     colored-man
     colorize
