@@ -16,18 +16,9 @@ export PATH="$PATH:$HOME/npm/bin"
 # Add RVM to PATH: automatically done by RVM
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# fb
-if [ -d ~/../engshare ]; then
-  export ADMIN_SCRIPTS=~/../engshare/admin/scripts
-  export PATH="$PATH:/opts/local/bin:/usr/facebook/ops/scripts:/usr/facebook/scripts"
-  export PATH="$PATH:~/.rbenv/shims:/usr/facebook/scripts/db:/usr/local/sbin:/mnt/vol/engshare/svnroot/tfb/trunk/www/scripts/bin:/mnt/vol/engshare/admin/scripts/hg:/mnt/vol/engshare/admin/scripts/git:/mnt/vol/engshare/admin/scripts:~/www/scripts/bin"
-  export PATH="$PATH:/home/engshare/third-party2/node/0.12.1/gcc-4.8.1-glibc-2.17/6f3b8b5/bin"
-fi
-
-# nuclide dev
-export PATH="/opt/facebook/nuclide/node-v5.10.0-darwin-x64/bin:$PATH"
-# osmeta dev
-export PATH="$PATH:$HOME/devtools"
+# for android dev
+# export ANDROID_HOME="$HOME/Library/Android/sdk"
+# export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 
 # so that vim on ubuntu can pbcopy, since vim's commands open
 # an nonlogin noninteractive shell
@@ -46,7 +37,27 @@ alias tmux="tmux -2"
 #   alias vim="nvim" # not working on my centos box yet
 # fi
 
-# for android dev
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+# =========== fb ===========
+if [ -d ~/../engshare ]; then
+  export ADMIN_SCRIPTS=~/../engshare/admin/scripts
+  export PATH="$PATH:/opts/local/bin:/usr/facebook/ops/scripts:/usr/facebook/scripts"
+  export PATH="$PATH:~/.rbenv/shims:/usr/facebook/scripts/db:/usr/local/sbin:/mnt/vol/engshare/svnroot/tfb/trunk/www/scripts/bin:/mnt/vol/engshare/admin/scripts/hg:/mnt/vol/engshare/admin/scripts/git:/mnt/vol/engshare/admin/scripts:~/www/scripts/bin"
+  export PATH="$PATH:/home/engshare/third-party2/node/0.12.1/gcc-4.8.1-glibc-2.17/6f3b8b5/bin"
+fi
 
+# nuclide dev
+export PATH="/opt/facebook/nuclide/node-v5.10.0-darwin-x64/bin:$PATH"
+# osmeta dev
+export PATH="$PATH:$HOME/devtools"
+
+export FBANDROID_DIR=/Users/phorust/fbsource/fbandroid
+alias quicklog_update=/Users/phorust/fbsource/fbandroid/scripts/quicklog/quicklog_update.sh
+alias qlu=quicklog_update
+
+# added by setup_fb4a.sh
+export ANDROID_SDK=/opt/android_sdk
+export ANDROID_NDK_REPOSITORY=/opt/android_ndk
+export ANDROID_HOME=${ANDROID_SDK}
+export PATH=${PATH}:${ANDROID_SDK}/tools:${ANDROID_SDK}/platform-tools
+
+# ========== end fb ===========
