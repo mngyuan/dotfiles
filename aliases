@@ -37,6 +37,9 @@ alias tmux="tmux -2"
 #   alias vim="nvim" # not working on my centos box yet
 # fi
 
+alias slup="hg-sl-up"
+alias hgclean="hg update -C ."
+
 # =========== fb ===========
 if [ -d ~/../engshare ]; then
   export ADMIN_SCRIPTS=~/../engshare/admin/scripts
