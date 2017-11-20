@@ -37,6 +37,7 @@ alias tmux="tmux -2"
 #   alias vim="nvim" # not working on my centos box yet
 # fi
 
+alias sl="hg ssl"
 alias slup="hg-sl-up"
 alias hgclean="hg update -C ."
 
