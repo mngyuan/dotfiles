@@ -66,7 +66,8 @@ if [ -L ~/.vimrc ]; then
     mv ~/.vimrc ~/.vimrc.prephorust
 fi
 ln -s ~/git/dotfiles/vimrc ~/.vimrc
-ln -s ~/.vimrc ~/.nvimrc
+mkdir -p ~/.config/nvim
+ln -s ~/git/dotfiles/init.vim ~/.config/nvim/init.vim
 if [ -L ~/.zshrc ]; then
     mv ~/.zshrc ~/.zshrc.prephorust
 fi
