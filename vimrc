@@ -1,70 +1,75 @@
 " phorust vimrc
-" YCM requires compiling, read the repo's readme
-" YCM needs this fix for the MacVim vim exec
-"    install_name_tool -change /System/Library/Frameworks/Python.framework/Versions/2.7/Python /usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/Python MacVim
-" replace MacVim with the path to the MacVim exec being used for vim
-"
-" fix from https://github.com/Valloric/YouCompleteMe/issues/8
 
 set nocompatible
 filetype off
 
 "***** PLUGINS *****
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 " powerful, light statusline
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 " git symbols in the left margin
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " directory exploration
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " multiline commenting
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 " git, inside vim, if you can remember the commands
-Plugin 'tpope/vim-fugitive'
-" modern day completion for vim
-Plugin 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-fugitive'
+" completions
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 " javascript completion
-Plugin 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim'
 " javascript type checking
-Plugin 'facebook/vim-flow'
-" javascript coloring and folding
-Plugin 'vim-javascript'
+Plug 'facebook/vim-flow'
+" javascript coloring
+Plug 'othree/yajs.vim'
+" HTML5 coloring
+Plug 'othree/html5.vim'
+" JSX
+Plug 'mxw/vim-jsx'
+" Load language plugins on demand
+Plug 'sheerun/vim-polyglot'
 " vim navigation for tmux
-Bundle 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 " automatically detect indentation
-Plugin 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'
 " automatically save a Session.vim, for tmux-resurrect
-Plugin 'tpope/vim-obsession'
+Plug 'tpope/vim-obsession'
 " ctrl-p fuzzy searching
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 " signs for hg
-Plugin 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 " search should show Match n of N
-Plugin 'henrik/vim-indexed-search.git'
+Plug 'henrik/vim-indexed-search'
 " align things nicely
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 " nice code review
-Plugin 'phleet/vim-arcanist'
+Plug 'phleet/vim-arcanist'
 " fav colors
-Plugin 'tomasr/molokai'
-Plugin 'benjaminwhite/Benokai'
-Plugin 'vyshane/vydark-vim-color'
-Plugin 'ajh17/Spacegray.vim'
-Plugin 'effkay/argonaut.vim'
-Plugin 'chankaward/vim-railscasts-theme'
-Plugin 'blerins/flattown'
-Plugin 'whatyouhide/vim-gotham'
-Plugin 'sjl/badwolf'
-Plugin 'morhetz/gruvbox'
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'jordwalke/flatlandia'
-Plugin 'junegunn/seoul256.vim'
-call vundle#end()
+Plug 'mhartington/oceanic-next'
+Plug 'tomasr/molokai'
+Plug 'benjaminwhite/Benokai'
+Plug 'vyshane/vydark-vim-color'
+Plug 'ajh17/Spacegray.vim'
+Plug 'effkay/argonaut.vim'
+Plug 'chankaward/vim-railscasts-theme'
+Plug 'blerins/flattown'
+Plug 'whatyouhide/vim-gotham'
+Plug 'sjl/badwolf'
+Plug 'morhetz/gruvbox'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'w0ng/vim-hybrid'
+Plug 'jordwalke/flatlandia'
+Plug 'junegunn/seoul256.vim'
+call plug#end()
 filetype plugin indent on
 
 " fb
@@ -120,8 +125,8 @@ map <leader>l :cn<CR>
 " NERDtree
 map <leader>e :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
-" YCM
-map <C-g> :YcmCompleter GoTo<CR>
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " visually align things
 vmap <leader>a= :Tabularize /=<CR>
 vmap <leader>a: :Tabularize /:<CR>
@@ -161,7 +166,7 @@ set cc=80
 set hlsearch	" highlight search terms
 set incsearch	" show search matches while typing
 
-set history=1000
+set history=10000
 set undolevels=1000
 " don't beep me
 set noerrorbells visualbell t_vb=
@@ -195,9 +200,14 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "***** FONT AND COLOR *****
 set t_Co=256
+if (has("termguicolors"))
+  set termguicolors
+endif
+" set background=dark
 syntax enable
-set background=dark
 colorscheme badwolf
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 if has("gui_running")
 	if has("gui_win32")
 		set encoding=utf-8
@@ -238,8 +248,8 @@ let g:signify_vcs_list = [ 'hg', 'perforce', 'svn' ]
 let g:signify_sign_change = "~"
 " statusline - use with airline
 let g:airline_powerline_fonts = 1	" pretty arrows
-let g:ycm_global_ycm_extra_conf = '~/git/dotfiles/ycm_extra_conf.py'
-" https://github.com/rasendubi/dotfiles/blob/d534c5fb6bf39f0d9c8668b564ab68b6e3a3eb78/.vim/.ycm_extra_conf.py
-let g:ycm_goto_buffer_command = 'new-tab'
 autocmd CompleteDone * pclose 	" close [Scratch] [Preview] split after completion
 let g:flow#autoclose = 1				" close quickfix after vim-flow check
+let g:jsx_ext_required = 0 " always allow jsx highlighting
+" ycm style autocomplete for deoplete & tern
+autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
