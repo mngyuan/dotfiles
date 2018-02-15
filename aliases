@@ -41,6 +41,7 @@ alias tmux="tmux -2"
 alias sl="hg ssl"
 alias slup="hg-sl-up"
 alias hgclean="hg update -C ."
+alias killmosh="kill $(who |grep mosh |grep -v via | gawk 'match($0, /\[([0-9]*)\]/, a) {print a[1]}') > /dev/null 2>&1"
 
 # =========== fb ===========
 if [ -d ~/../engshare ]; then
