@@ -19,7 +19,7 @@ Plug 'tpope/vim-fugitive'
 " completions
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
+elseif v:version >= 800
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
@@ -45,6 +45,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-obsession'
 " ctrl-p fuzzy searching
 Plug 'kien/ctrlp.vim'
+" better fuzzy searching
+Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
 " signs for hg
 Plug 'mhinz/vim-signify'
 " search should show Match n of N
@@ -72,11 +74,11 @@ Plug 'junegunn/seoul256.vim'
 call plug#end()
 filetype plugin indent on
 
-" fb
-if filereadable("/home/engshare/admin/scripts/vim/fbvim.vim")
-	source /home/engshare/admin/scripts/vim/fbvim.vim
-	source /home/engshare/admin/scripts/vim/biggrep.vim
-endif
+" fb: these take 1s to load so im disabling
+"if filereadable("/home/engshare/admin/scripts/vim/fbvim.vim")
+	"source /home/engshare/admin/scripts/vim/fbvim.vim
+	"source /home/engshare/admin/scripts/vim/biggrep.vim
+"endif
 
 "***** REMAPPINGS *****
 " solve carpal tunnel
@@ -125,8 +127,6 @@ map <leader>l :cn<CR>
 " NERDtree
 map <leader>e :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " visually align things
 vmap <leader>a= :Tabularize /=<CR>
 vmap <leader>a: :Tabularize /:<CR>
@@ -135,6 +135,21 @@ vmap <leader>a" :Tabularize /"<CR>
 vmap <leader>a< :Tabularize /<<CR>
 vmap <leader>a/ :Tabularize / \/\/<CR>
 
+" deoplete tab-complete
+if has('nvim') || v:version >= 800
+  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+endif
+" otherwise use dumb completion
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
 
 "***** BASIC VIM SETTINGS *****
 set laststatus=2		" always show statusline
@@ -194,6 +209,8 @@ set undofile
 set undodir=~/.vimundo/ " this directory must exist
 
 set ssop-=options	" do not store global/local vars in sessions
+
+set wildignore=*.o,*~,*.pyc " ignore compiled files
 
 " jump to last position on file open
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\""
