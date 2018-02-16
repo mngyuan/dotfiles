@@ -270,3 +270,10 @@ let g:flow#autoclose = 1				" close quickfix after vim-flow check
 let g:jsx_ext_required = 0 " always allow jsx highlighting
 " ycm style autocomplete for deoplete & tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+" from ziggy
+if filereadable("/home/engshare/admin/scripts/vim/fbvim.vim")
+  let g:CommandTInputDebounce=50
+  let g:CommandTFileScanner='watchman'
+  let g:CommandTSmartCase = 1
+  let g:CommandTMaxCachedDirectories = 1000
+endif
