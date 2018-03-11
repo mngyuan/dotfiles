@@ -16,8 +16,11 @@ bindkey "^R" history-incremental-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
+# =========== fb ===========
 # kill stale mosh sessions
-kill $(who |grep mosh |grep -v via | gawk 'match($0, /\[([0-9]*)\]/, a) {print a[1]}') > /dev/null 2>&1
+if [ -d ~/../engshare ]; then
+  kill $(who |grep mosh |grep -v via | gawk 'match($0, /\[([0-9]*)\]/, a) {print a[1]}') > /dev/null 2>&1
+fi
 
 function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
