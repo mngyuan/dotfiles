@@ -16,9 +16,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 " git, inside vim, if you can remember the commands
 Plug 'tpope/vim-fugitive'
-" completions
 if has('nvim')
+  " completions
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " linting
+  Plug 'w0rp/ale'
 elseif v:version >= 800
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
@@ -41,6 +43,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'christoomey/vim-tmux-navigator'
 " automatically detect indentation
 Plug 'tpope/vim-sleuth'
+" indentation guides
+Plug 'nathanaelkane/vim-indent-guides'
 " automatically save a Session.vim, for tmux-resurrect
 Plug 'tpope/vim-obsession'
 " ctrl-p fuzzy searching
@@ -277,3 +281,5 @@ if filereadable("/home/engshare/admin/scripts/vim/fbvim.vim")
   let g:CommandTSmartCase = 1
   let g:CommandTMaxCachedDirectories = 1000
 endif
+" show indents
+let g:indent_guides_enable_on_vim_startup=1
