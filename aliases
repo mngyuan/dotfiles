@@ -41,12 +41,12 @@ alias tmux="tmux -2"
 alias sl="hg ssl"
 alias slup="hg-sl-up"
 alias hgclean="hg update -C ."
-alias killmosh="kill $(who |grep mosh |grep -v via | gawk 'match($0, /\[([0-9]*)\]/, a) {print a[1]}') > /dev/null 2>&1"
 
 # =========== fb ===========
 if [ -d ~/../engshare ]; then
   export ADMIN_SCRIPTS=~/../engshare/admin/scripts
   export PATH="$PATH:/opts/local/bin:/usr/facebook/ops/scripts:/usr/facebook/scripts"
+  alias killmosh="kill $(who |grep mosh |grep -v via | gawk 'match($0, /\[([0-9]*)\]/, a) {print a[1]}') > /dev/null 2>&1"
   export PATH="$PATH:~/.rbenv/shims:/usr/facebook/scripts/db:/usr/local/sbin:/mnt/vol/engshare/svnroot/tfb/trunk/www/scripts/bin:/mnt/vol/engshare/admin/scripts/hg:/mnt/vol/engshare/admin/scripts/git:/mnt/vol/engshare/admin/scripts:~/www/scripts/bin"
   export PATH="$PATH:/home/engshare/third-party2/node/0.12.1/gcc-4.8.1-glibc-2.17/6f3b8b5/bin"
 fi
