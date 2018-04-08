@@ -38,7 +38,7 @@ Plug 'othree/html5.vim'
 " JSX
 Plug 'mxw/vim-jsx'
 " Load language plugins on demand
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 " vim navigation for tmux
 Plug 'christoomey/vim-tmux-navigator'
 " automatically detect indentation
