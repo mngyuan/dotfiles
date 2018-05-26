@@ -28,7 +28,7 @@ elseif v:version >= 800
 endif
 let g:deoplete#enable_at_startup = 1
 " javascript completion
-Plug 'marijnh/tern_for_vim'
+" Plug 'marijnh/tern_for_vim'
 " javascript type checking
 Plug 'facebook/vim-flow'
 " javascript coloring
