@@ -21,6 +21,9 @@ bindkey '^e' end-of-line
 if [ -d ~/../engshare ]; then
   kill $(who |grep mosh |grep -v via | gawk 'match($0, /\[([0-9]*)\]/, a) {print a[1]}') > /dev/null 2>&1
 fi
+if [[ -a "/usr/facebook/ops/rc/master.zshrc" ]]; then
+  source /usr/facebook/ops/rc/master.zshrc
+fi
 
 function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
