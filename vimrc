@@ -92,6 +92,9 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+" move visual lines with j,k, but not when using line numbering
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 " copy to system clipboard
 vmap <C-c> :w !pbcopy<CR><CR>
 vmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
