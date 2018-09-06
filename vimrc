@@ -77,7 +77,11 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'w0ng/vim-hybrid'
 Plug 'jordwalke/flatlandia'
 Plug 'junegunn/seoul256.vim'
+Plug 'rakr/vim-one'
 call plug#end()
+if !exists("g:syntax_on")
+  syntax enable
+endif
 filetype plugin indent on
 
 " fb: these take 1s to load so im disabling
@@ -206,12 +210,6 @@ set autochdir 				" set cwd to cur buffer's loc
 					" was for NERDTree but dont need
 " autochdir and it's friends don't play well with tmux-resurrect...
 
-" gvim options
-set guioptions-=m " menu bar
-set guioptions-=T " toolbar
-set guioptions-=r " righthand scroll bar
-set guioptions-=L " lefthand scroll bar
-
 " holy fuck why have i been in the dark ages
 set mouse=a
 set undofile
@@ -225,25 +223,31 @@ set wildignore=*.o,*~,*.pyc " ignore compiled files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\""
 
 "***** FONT AND COLOR *****
-set t_Co=256
-if (has("termguicolors"))
-  set termguicolors
+"Credit joshdick
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 endif
-" set background=dark
-syntax enable
-colorscheme badwolf
+if !has("nvim")
+  set t_8b=[48;2;%lu;%lu;%lum
+  set t_8f=[38;2;%lu;%lu;%lum
+endif
+colorscheme one
+set background=light
+let g:one_allow_italics = 1
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-if has("gui_running")
-	if has("gui_win32")
-		set encoding=utf-8
-		set guifont=DejaVu_Sans_Mono_for_Powerline:h10
-	elseif has("gui_macvim")
-		set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
-	elseif has("gui_gtk2")
-		set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
-	endif
-endif
 " | as cursor in insert mode instead of block
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -263,7 +267,6 @@ set listchars=tab:\ \ ,trail:·
 
 
 "***** PLUGIN SETTINGS *****
-syntax on
 " gitgutter
 " let g:gitgutter_sign_column_always = 1	" always show diff col
 let g:gitgutter_realtime = 1	" constantly show git diff

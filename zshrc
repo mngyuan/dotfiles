@@ -5,6 +5,8 @@ fi
 
 # save a shitload of lines
 HISTSIZE=130000 SAVEHIST=130000
+# for true color
+TERM="xterm-256color-italic"
 # vi mode
 bindkey -v
 # make ctrl-h and backspace work after exiting command mode
