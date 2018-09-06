@@ -59,6 +59,8 @@ Plug 'henrik/vim-indexed-search'
 Plug 'godlygeek/tabular'
 " nice code review
 Plug 'phleet/vim-arcanist'
+" CSS color previews
+Plug 'ap/vim-css-color'
 " fav colors
 Plug 'mhartington/oceanic-next'
 Plug 'tomasr/molokai'
