@@ -153,3 +153,6 @@ fi
 
 # attach to tmux after starting zsh
 # leek
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
