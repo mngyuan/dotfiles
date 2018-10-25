@@ -91,17 +91,6 @@ cd ~/bin && curl https://raw.githubusercontent.com/felipec/git-remote-hg/master/
 chmod +x ~/bin/*
 
 
-read -d '' reattachscript <<- EOF
-#!/bin/bash
-# For non-OS X systems, a placeholder for the program from
-# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
-exec \$@
-EOF
-# run leek when opening a terminal window
-read -d '' tmuxattachscript <<- EOF
-#!/bin/bash
-if [ -z "\$TMUX" ]; then tmux -2 attach -t base || tmux -2 new -s base; fi
-EOF
 if [[ "$(uname)" == Darwin* ]]; then
     # get brew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -125,8 +114,6 @@ if [[ "$(uname)" == Darwin* ]]; then
     brew install mobile-shell
     # for tmux
     brew install tmux
-    # for tmux-yank and other fancy fancies
-    brew install reattach-to-user-namespace
     # for battery in tmux statusline
     brew tap Goles/battery
     brew install battery
@@ -141,9 +128,6 @@ if [[ "$(uname)" == Darwin* ]]; then
     # just kidding, i'll set the minimum allowed because 10/1 is way too fast
     defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
     defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
-else
-    echo "$reattachscript" > ~/bin/reattach-to-user-namespace
-    chmod +x ~/bin/reattach-to-user-namespace
 fi
 echo "$tmuxattachscript" > ~/bin/leek
 chmod +x ~/bin/leek
