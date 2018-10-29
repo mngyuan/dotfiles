@@ -246,7 +246,31 @@ if !has("nvim")
   set t_8f=[38;2;%lu;%lu;%lum
 endif
 colorscheme one
-set background=light
+if strftime("%U") < 11
+  if strftime("%H") > 9 && strftime("%H") < 19
+    set background=light
+  else
+    set background=dark
+  endif
+elseif strftime("%U") < 19
+  if strftime("%H") > 9 && strftime("%H") < 21
+    set background=light
+  else
+    set background=dark
+  endif
+elseif strftime("%U") < 33
+  if strftime("%H") > 9 && strftime("%H") < 19
+    set background=light
+  else
+    set background=dark
+  endif
+else
+  if strftime("%H") > 9 && strftime("%H") < 17
+    set background=light
+  else
+    set background=dark
+  endif
+endif
 let g:one_allow_italics = 1
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
