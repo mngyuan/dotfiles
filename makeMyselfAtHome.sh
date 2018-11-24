@@ -92,6 +92,11 @@ chmod +x ~/bin/*
 
 
 if [[ "$(uname)" == Darwin* ]]; then
+    # make keys repeat properly
+    defaults write -g ApplePressAndHoldEnabled -bool false
+    # just kidding, i'll set the minimum allowed because 10/1 is way too fast
+    defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+    defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
     # get brew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew doctor
@@ -120,17 +125,9 @@ if [[ "$(uname)" == Darwin* ]]; then
     # for glorious debugging, except gdb on mac sucks
     brew install cgdb
     # nvim has THREADS welcome to 2004
-    brew tap neovim/neovim
-    brew install --HEAD neovim
-
-    # make keys repeat properly
-    defaults write -g ApplePressAndHoldEnabled -bool false
-    # just kidding, i'll set the minimum allowed because 10/1 is way too fast
-    defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
-    defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
+    brew install neovim
+    brew install yarn
 fi
-echo "$tmuxattachscript" > ~/bin/leek
-chmod +x ~/bin/leek
 
 
 # echo post-install stuff
@@ -140,3 +137,4 @@ echo "Seil for 87U numlock / to remap capslock"
 echo "Native Display Brightness"
 echo "Sublime 3 / iTerm2"
 echo "Chrome / Spotify / ShiftIt / Dropbox / Adobe CC / Bartender"
+echo "Set Applications can access clipboard, Window -> No Title, font in Iterm"
