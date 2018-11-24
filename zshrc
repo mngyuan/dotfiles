@@ -3,6 +3,8 @@ if [ -n "$ADMINSCRIPTS" ]; then
   source "$ADMIN_SCRIPTS"/master.zshrc
 fi
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 # save a shitload of lines
 HISTSIZE=130000 SAVEHIST=130000
 # for true color
@@ -150,9 +152,4 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
   ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})
 %{$reset_color%}"
 fi
-
-# attach to tmux after starting zsh
-# leek
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
