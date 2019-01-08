@@ -51,7 +51,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 " automatically save a Session.vim, for tmux-resurrect
 Plug 'tpope/vim-obsession'
 " ctrl-p fuzzy searching
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " better fuzzy searching
 Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
 " signs for hg
@@ -294,6 +294,8 @@ set listchars=tab:\ \ ,trail:·
 
 
 "***** PLUGIN SETTINGS *****
+" ctrlp should also search recent buffers by default
+let g:ctrlp_cmd = 'CtrlPMixed'
 " gitgutter
 " let g:gitgutter_sign_column_always = 1	" always show diff col
 let g:gitgutter_realtime = 1	" constantly show git diff
