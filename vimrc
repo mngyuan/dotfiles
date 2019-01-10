@@ -152,6 +152,8 @@ vmap <leader>a\| :Tabularize /\|<CR>
 vmap <leader>a" :Tabularize /"<CR>
 vmap <leader>a< :Tabularize /<<CR>
 vmap <leader>a/ :Tabularize / \/\/<CR>
+" buffer listing with ctrlp <M-p>
+nnoremap π :CtrlPBuffer<CR>
 
 " deoplete tab-complete
 if has('nvim') || v:version >= 800
