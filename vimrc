@@ -250,7 +250,7 @@ if !has("nvim")
 endif
 colorscheme one
 if strftime("%U") < 11
-  if strftime("%H") > 9 && strftime("%H") < 19
+  if strftime("%H") > 9 && strftime("%H") < 18
     set background=light
   else
     set background=dark
