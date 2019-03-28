@@ -90,7 +90,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
   plugins=(
     autojump
     brew
-    colored-man
+    colored-man-pages
     colorize
     cp
     git
