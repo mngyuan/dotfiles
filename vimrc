@@ -267,6 +267,12 @@ elseif strftime("%U") < 33
   else
     set background=dark
   endif
+elseif strftime("%U") < 41
+  if strftime("%H") > 9 && strftime("%H") < 18
+    set background=light
+  else
+    set background=dark
+  endif
 else
   if strftime("%H") > 9 && strftime("%H") < 17
     set background=light
