@@ -64,6 +64,8 @@ Plug 'godlygeek/tabular'
 Plug 'phleet/vim-arcanist'
 " CSS color previews
 Plug 'ap/vim-css-color'
+" surround things with quotes, etc easily
+Plug 'tpope/vim-surround'
 " fav colors
 Plug 'mhartington/oceanic-next'
 Plug 'tomasr/molokai'
