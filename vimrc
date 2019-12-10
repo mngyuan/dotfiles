@@ -109,6 +109,7 @@ nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 " copy to system clipboard
 vmap <C-c> :w !pbcopy<CR><CR>
 vmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+imap <C-v> <ESC>"*p
 map <leader>v :set paste!<CR>
 " reselect after shift
 vnoremap < <gv
