@@ -35,7 +35,7 @@ Plug 'othree/yajs.vim'
 " HTML5 coloring
 Plug 'othree/html5.vim'
 " JSX
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 " Load language plugins on demand
 " Plug 'sheerun/vim-polyglot'
 " vim navigation for tmux
@@ -330,3 +330,5 @@ if filereadable("/home/engshare/admin/scripts/vim/fbvim.vim")
 endif
 " show indents
 let g:indent_guides_enable_on_vim_startup=1
+" show vim-javascript's highlighting for flow 
+let g:javascript_plugin_flow = 1
