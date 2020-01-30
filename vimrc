@@ -299,6 +299,9 @@ au! BufRead,BufNewFile README set filetype=text
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" vim-sleuth seems to be setting stupid tabstops, should i remove?
+autocmd FileType c let b:sleuth_automatic = 0
+autocmd FileType c setlocal shiftwidth=2 tabstop=2 softtabstop=2
 set list	"see whitespace"
 " set listchars=tab:→\ ,trail:· " the tab arrows are just too ugly
 set listchars=tab:\ \ ,trail:·
