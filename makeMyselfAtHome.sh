@@ -87,6 +87,10 @@ part_two() {
 	mv ~/.zshenv ~/.zshenv.prephorust
     fi
     ln -s ~/git/dotfiles/zshenv ~/.zshenv
+    if [ -L ~/.prettierrc.json ]; then
+	mv ~/.prettierrc.json ~/.prettierrc.json.prephorust
+    fi
+    ln -s ~/git/dotfiles/prettierrc.json ~/.prettierrc.json
 
 
     # get git helpers
