@@ -296,6 +296,7 @@ au! BufRead,BufNewFile *.ejs  set filetype=html		  " highlight for ejs
 au! BufRead,BufNewFile *.txt  set filetype=text
 au! BufRead,BufNewFile README set filetype=text
 " prefer 2 tabsize for web/frontend stuff
+set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
