@@ -21,7 +21,7 @@ part_one () {
 	    echo "~/git/dotfiles already exists! If oh-my-zsh is now installed, skip to part 2."
 
 	    select sq in "Skip" "Quit"; do
-		case $yn in
+		case $sq in
 		    Skip ) part_two; break;;
 		    Quit ) echo "Ok. exiting..."; exit;;
 		esac
@@ -138,6 +138,8 @@ part_two() {
 	# nvim has THREADS welcome to 2004
 	brew install neovim
 	brew install yarn
+	# for deoplete
+	yarn global add neovim
     fi
 
 
