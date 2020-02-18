@@ -20,7 +20,7 @@ if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   " linting
   Plug 'w0rp/ale'
-elseif v:version >= 800
+elseif v:version >= 800 && has('python3')
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
