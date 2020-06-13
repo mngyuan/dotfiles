@@ -13,7 +13,9 @@ export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 # add a local npm
 export PATH="$PATH:$HOME/npm/bin"
-export PATH="$PATH:$(yarn global bin)"
+if type "yarn" > /dev/null; then
+  export PATH="$PATH:$(yarn global bin)"
+fi
 # Add RVM to PATH: automatically done by RVM
 export PATH="$PATH:$HOME/.rvm/bin"
 
