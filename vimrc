@@ -36,6 +36,12 @@ Plug 'othree/yajs.vim'
 Plug 'othree/html5.vim'
 " JSX
 Plug 'maxmellon/vim-jsx-pretty'
+" Typescript
+Plug 'leafgarland/typescript-vim'
+" Typescript + JSX
+Plug 'peitalin/vim-jsx-typescript'
+" YAML
+Plug 'stephpy/vim-yaml'
 " Load language plugins on demand
 " Plug 'sheerun/vim-polyglot'
 " vim navigation for tmux
