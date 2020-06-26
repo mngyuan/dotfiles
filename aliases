@@ -19,9 +19,12 @@ fi
 # Add RVM to PATH: automatically done by RVM
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# for android dev
-# export ANDROID_HOME="$HOME/Library/Android/sdk"
-# export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+# react native / android dev
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # so that vim on ubuntu can pbcopy, since vim's commands open
 # an nonlogin noninteractive shell
@@ -83,9 +86,9 @@ alias quicklog_update=/Users/phorust/fbsource/fbandroid/scripts/quicklog/quicklo
 alias qlu=quicklog_update
 
 # added by setup_fb4a.sh
-export ANDROID_SDK=/opt/android_sdk
-export ANDROID_NDK_REPOSITORY=/opt/android_ndk
-export ANDROID_HOME=${ANDROID_SDK}
-export PATH=${PATH}:${ANDROID_SDK}/tools:${ANDROID_SDK}/platform-tools
+#export ANDROID_SDK=/opt/android_sdk
+#export ANDROID_NDK_REPOSITORY=/opt/android_ndk
+#export ANDROID_HOME=${ANDROID_SDK}
+#export PATH=${PATH}:${ANDROID_SDK}/tools:${ANDROID_SDK}/platform-tools
 
 # ========== end fb ===========
