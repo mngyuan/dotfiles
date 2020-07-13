@@ -66,6 +66,16 @@ alias jsgrep="grep \
   --extended-regexp\
   --recursive\
 "
+alias rngrep="grep \
+  --color=auto \
+  --exclude=\*.{log,lock} \
+  --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,build,android,ios} \
+  --ignore-case\
+  --line-number\
+  --binary-files=without-match\
+  --extended-regexp\
+  --recursive\
+"
 
 # =========== fb ===========
 if [ -d ~/../engshare ]; then

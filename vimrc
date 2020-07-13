@@ -104,14 +104,13 @@ filetype plugin indent on
 "***** REMAPPINGS *****
 " solve carpal tunnel
 nnoremap ; :
-" stop bein a god-damned n00b
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
 " move visual lines with j,k, but not when using line numbering
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+" save, now that i'm using hhkb layout <C> is easier
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
 " copy to system clipboard
 vmap <C-c> :w !pbcopy<CR><CR>
 vmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
