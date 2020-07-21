@@ -63,7 +63,7 @@ part_two() {
     vim +PlugInstall +qall
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    nvim +PlugInstall +qall
+    nvim +PlugInstall +UpdateRemotePlugins +qall
     # set up extra tmux stuff
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -119,9 +119,7 @@ part_two() {
 	brew install node
 	# htop > top
 	brew install htop-osx
-	# for YCM python
-	brew install python
-	# brew link --overwrite python # don't link or YCM compile wont work
+	# for deoplete
 	brew install python3
 	brew link --overwrite python3
 	# for j
@@ -139,13 +137,15 @@ part_two() {
 	brew install neovim
 	brew install yarn
 	# for deoplete
-	yarn global add neovim
+	npm -g install neovim
+	# from vim8 with python3
+	brew install vim
     fi
 
 
     echo "************** INSTALL COMPLETE **************"
     echo "you're also going to want:"
-    echo "Seil for 87U numlock / to remap capslock"
+    echo "Karabiner Elements for 87U numlock / to remap capslock"
     echo "Native Display Brightness"
     echo "Chrome / HammerSpoon / Google Drive / Adobe CC"
     echo "iTerm2, ~/git/dotfiles/terminfo"

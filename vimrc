@@ -15,11 +15,13 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 " git, inside vim, if you can remember the commands
 Plug 'tpope/vim-fugitive'
+if has('nvim') || (v:version >= 800 && has('python3'))
+  " linting
+  Plug 'dense-analysis/ale'
+endif
 if has('nvim')
   " completions
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " linting
-  Plug 'w0rp/ale'
 elseif v:version >= 800 && has('python3')
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
@@ -72,6 +74,14 @@ Plug 'phleet/vim-arcanist'
 Plug 'ap/vim-css-color'
 " surround things with quotes, etc easily
 Plug 'tpope/vim-surround'
+" LSP support
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+" multi-entry selection UI for LSP
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " fav colors
 Plug 'mhartington/oceanic-next'
 Plug 'tomasr/molokai'
@@ -97,8 +107,8 @@ filetype plugin indent on
 
 " fb: these take 1s to load so im disabling
 "if filereadable("/home/engshare/admin/scripts/vim/fbvim.vim")
-	"source /home/engshare/admin/scripts/vim/fbvim.vim
-	"source /home/engshare/admin/scripts/vim/biggrep.vim
+  "source /home/engshare/admin/scripts/vim/fbvim.vim
+  "source /home/engshare/admin/scripts/vim/biggrep.vim
 "endif
 
 "***** REMAPPINGS *****
@@ -179,6 +189,29 @@ endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 
+" LSP
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascriptreact': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+" note that if you are using Plug mapping you should not use `noremap` mappings.
+nmap <F5> <Plug>(lcn-menu)
+autocmd FileType * call LanguageClientMaps()
+function! LanguageClientMaps()
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+    nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+    nnoremap K :call LanguageClient#textDocument_hover()<CR>
+  endif
+endfunction
+
 "***** BASIC VIM SETTINGS *****
 set laststatus=2		" always show statusline
 
@@ -197,7 +230,7 @@ set showmatch	" show matching parens
 
 set ignorecase	" ignore case in search
 set smartcase	" ignore case if all low caps
-		"   otherwise, pay attention to caps
+                "   otherwise, pay attention to caps
 set ssop-=folds	" do not store folds
 
 
@@ -222,7 +255,7 @@ set noswapfile 				" live on the edge man #git
 
 set autochdir 				" set cwd to cur buffer's loc
 "autocmd BufEnter * silent! lcd %:p:h	" set cwd to cur buffer's loc,
-					" was for NERDTree but dont need
+                                        " was for NERDTree but dont need
 " autochdir and it's friends don't play well with tmux-resurrect...
 
 " holy fuck why have i been in the dark ages
@@ -233,6 +266,10 @@ set undodir=~/.vimundo/ " this directory must exist
 set ssop-=options	" do not store global/local vars in sessions
 
 set wildignore=*.o,*~,*.pyc " ignore compiled files
+
+" bash style tab completion for files
+set wildmode=longest,list,full
+set wildmenu
 
 " jump to last position on file open
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\""
@@ -300,14 +337,6 @@ au! BufRead,BufNewFile *.md   set filetype=markdown	" highlighting for markdown
 au! BufRead,BufNewFile *.ejs  set filetype=html		  " highlight for ejs
 au! BufRead,BufNewFile *.txt  set filetype=text
 au! BufRead,BufNewFile README set filetype=text
-" prefer 2 tabsize for web/frontend stuff
-set shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
-" vim-sleuth seems to be setting stupid tabstops, should i remove?
-autocmd FileType c let b:sleuth_automatic = 0
-autocmd FileType c setlocal shiftwidth=2 tabstop=2 softtabstop=2
 set list	"see whitespace"
 " set listchars=tab:→\ ,trail:· " the tab arrows are just too ugly
 set listchars=tab:\ \ ,trail:·
@@ -340,5 +369,16 @@ if filereadable("/home/engshare/admin/scripts/vim/fbvim.vim")
 endif
 " show indents
 let g:indent_guides_enable_on_vim_startup=1
-" show vim-javascript's highlighting for flow 
+" show vim-javascript's highlighting for flow
 let g:javascript_plugin_flow = 1
+" ALE for vim8 / nvim
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'json': ['prettier'],
+\   'css': ['prettier'],
+\   'html': ['prettier'],
+\   'typescript': ['prettier', 'eslint'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '-'
