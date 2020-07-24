@@ -271,6 +271,14 @@ set wildignore=*.o,*~,*.pyc " ignore compiled files
 set wildmode=longest,list,full
 set wildmenu
 
+set expandtab      " spaces over tabs
+set shiftwidth=2   " soft tabs are 2 spaces for expandtab
+set softtabstop=-2 " negative means use shiftwidth
+" set noshiftround " do i need this?
+" set smarttab     " do i need this?
+" real tabs are 4
+set tabstop=4
+
 " jump to last position on file open
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\""
 
@@ -374,6 +382,7 @@ let g:javascript_plugin_flow = 1
 " ALE for vim8 / nvim
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
+\   'javascriptreact': ['prettier'],
 \   'json': ['prettier'],
 \   'css': ['prettier'],
 \   'html': ['prettier'],
