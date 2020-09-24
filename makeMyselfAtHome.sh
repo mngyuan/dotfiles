@@ -64,6 +64,7 @@ part_two() {
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     nvim +PlugInstall +UpdateRemotePlugins +qall
+    nvim +"CocInstall coc-json coc-tsserver coc-html coc-css coc-eslint coc-prettier coc-yaml"
     # set up extra tmux stuff
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 

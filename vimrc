@@ -17,24 +17,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 " git, inside vim, if you can remember the commands
 Plug 'tpope/vim-fugitive'
-if has('nvim') || (v:version >= 800 && has('python3'))
-  " linting
-  Plug 'dense-analysis/ale'
-endif
-if has('nvim')
-  " completions
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-elseif v:version >= 800 && has('python3')
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
-" disabled while testing COC
-" let g:deoplete#enable_at_startup = 1
-" javascript completion
-" Plug 'marijnh/tern_for_vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " javascript type checking
 Plug 'facebook/vim-flow'
 " javascript coloring
@@ -79,11 +62,6 @@ Plug 'phleet/vim-arcanist'
 Plug 'ap/vim-css-color'
 " surround things with quotes, etc easily
 Plug 'tpope/vim-surround'
-" LSP support
-"Plug 'autozimu/LanguageClient-neovim', {
-    "\ 'branch': 'next',
-    "\ 'do': 'bash install.sh',
-    "\ }
 " multi-entry selection UI for LSP
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -177,48 +155,6 @@ vmap <leader>a< :Tabularize /<<CR>
 vmap <leader>a/ :Tabularize / \/\/<CR>
 " buffer listing with ctrlp <M-p>
 nnoremap π :CtrlPBuffer<CR>
-
-" deoplete tab-complete
-if has('nvim') || v:version >= 800
-  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-endif
-" otherwise use dumb completion
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-" disabled while testing COC out
-" inoremap <expr> <tab> InsertTabWrapper()
-" inoremap <s-tab> <c-n>
-
-" LSP
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-"let g:LanguageClient_serverCommands = {
-    "\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    "\ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    "\ 'javascriptreact': ['/usr/local/bin/javascript-typescript-stdio'],
-    "\ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    "\ 'python': ['/usr/local/bin/pyls'],
-    "\ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-    "\ }
-    "\ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
-    "\ 'typescript.tsx': ['/usr/local/bin/javascript-typescript-stdio'],
-
-" note that if you are using Plug mapping you should not use `noremap` mappings.
-"nmap <F5> <Plug>(lcn-menu)
-"autocmd FileType * call LanguageClientMaps()
-"function! LanguageClientMaps()
-  "if has_key(g:LanguageClient_serverCommands, &filetype)
-    "nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    "nnoremap K :call LanguageClient#textDocument_hover()<CR>
-  "endif
-"endfunction
 
 "***** BASIC VIM SETTINGS *****
 set laststatus=2		" always show statusline
@@ -374,8 +310,6 @@ let g:airline_powerline_fonts = 1	" pretty arrows
 autocmd CompleteDone * pclose 	" close [Scratch] [Preview] split after completion
 let g:flow#autoclose = 1				" close quickfix after vim-flow check
 let g:jsx_ext_required = 0 " always allow jsx highlighting
-" ycm style autocomplete for deoplete & tern
-" autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 " from ziggy
 if filereadable("/home/engshare/admin/scripts/vim/fbvim.vim")
   let g:CommandTInputDebounce=50
@@ -387,18 +321,6 @@ endif
 let g:indent_guides_enable_on_vim_startup=1
 " show vim-javascript's highlighting for flow
 let g:javascript_plugin_flow = 1
-" ALE for vim8 / nvim
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'javascriptreact': ['prettier'],
-\   'json': ['prettier'],
-\   'css': ['prettier'],
-\   'html': ['prettier'],
-\   'typescript': ['prettier', 'eslint'],
-\}
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '>'
-let g:ale_sign_warning = '-'
 
 "****** COC SETTINGS ******
 " TextEdit might fail if hidden is not set.
