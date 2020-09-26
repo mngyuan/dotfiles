@@ -92,6 +92,10 @@ part_two() {
 	mv ~/.prettierrc.json ~/.prettierrc.json.prephorust
     fi
     ln -s ~/git/dotfiles/prettierrc.json ~/.prettierrc.json
+    if [ -L ~/.alacritty.yml]; then
+	mv ~/.alacritty.yml ~/.alacritty.yml.prephorust
+    fi
+    ln -s ~/git/dotfiles/alacritty.yml ~/.alacritty.yml
 
 
     # get git helpers
@@ -141,6 +145,8 @@ part_two() {
 	npm -g install neovim
 	# from vim8 with python3
 	brew install vim
+	# forget iTerm2
+	brew cask install alacritty
     fi
 
 
@@ -149,8 +155,7 @@ part_two() {
     echo "Karabiner Elements for 87U numlock / to remap capslock"
     echo "Native Display Brightness"
     echo "Chrome / HammerSpoon / Google Drive / Adobe CC"
-    echo "iTerm2, ~/git/dotfiles/terminfo"
-    echo "Set Applications can access clipboard, Window -> No Title, font in Iterm"
+    echo "~/git/dotfiles/terminfo"
 }
 
 part_one
