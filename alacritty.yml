@@ -395,7 +395,7 @@ shell:
   args:
     - --login
     - -c
-    - "tmux attach || tmux new -s base; zsh"
+    - "tmux attach || tmux new -s base; exec zsh"
 
 # Startup directory
 #
