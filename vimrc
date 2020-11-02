@@ -321,6 +321,23 @@ endif
 let g:indent_guides_enable_on_vim_startup=1
 " show vim-javascript's highlighting for flow
 let g:javascript_plugin_flow = 1
+let g:coc_global_extensions = [
+      \'coc-json',
+      \'coc-tsserver',
+      \'coc-html',
+      \'coc-css',
+      \'coc-eslint',
+      \'coc-prettier',
+      \'coc-highlight',
+      \'coc-yaml'
+\]
+call coc#config('coc.preferences.formatOnSaveFiletypes', [
+    \"css",
+    \"markdown",
+    \"javascript",
+    \"json",
+    \"typescript"
+\])
 
 "****** COC SETTINGS ******
 " TextEdit might fail if hidden is not set.
