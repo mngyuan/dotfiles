@@ -26,7 +26,7 @@ part_one () {
 		done
 		fi
 		mkdir ~/git/dotfiles
-		git clone https://github.com/phorust/dotfiles.git ~/git/dotfiles
+		git clone https://github.com/mngyuan/dotfiles.git ~/git/dotfiles
 
 		function setup_ssh {
 			ssh-keygen
@@ -42,7 +42,7 @@ part_one () {
 		esac
 	done
 	if [ -f ~/.ssh/id_rsa.pub ]; then
-		cd ~/git/dotfiles && git remote set-url origin git@github.com:phorust/dotfiles.git
+		cd ~/git/dotfiles && git remote set-url origin git@github.com:mngyuan/dotfiles.git
 	fi
 
 	# set up oh-my-zsh and extra zsh stuff
@@ -68,30 +68,30 @@ part_two() {
 
 	# now, lets hook up our actual dotfiles
 	if [ -L ~/.tmux.conf ]; then
-		mv ~/.tmux.conf ~/.tmux.conf.prephorust
+		mv ~/.tmux.conf ~/.tmux.conf.premngyuan
 	fi
 	ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
 	echo -e "\n# KL\nsource ~/git/dotfiles/bash_profile" >> ~/.bash_profile
 	if [ -L ~/.vimrc ]; then
-		mv ~/.vimrc ~/.vimrc.prephorust
+		mv ~/.vimrc ~/.vimrc.premngyuan
 	fi
 	ln -s ~/git/dotfiles/vimrc ~/.vimrc
 	mkdir -p ~/.config/nvim
 	ln -s ~/git/dotfiles/init.vim ~/.config/nvim/init.vim
 	if [ -L ~/.zshrc ]; then
-		mv ~/.zshrc ~/.zshrc.prephorust
+		mv ~/.zshrc ~/.zshrc.premngyuan
 	fi
 	ln -s ~/git/dotfiles/zshrc ~/.zshrc
 	if [ -L ~/.zshenv ]; then
-		mv ~/.zshenv ~/.zshenv.prephorust
+		mv ~/.zshenv ~/.zshenv.premngyuan
 	fi
 	ln -s ~/git/dotfiles/zshenv ~/.zshenv
 	if [ -L ~/.prettierrc.json ]; then
-		mv ~/.prettierrc.json ~/.prettierrc.json.prephorust
+		mv ~/.prettierrc.json ~/.prettierrc.json.premngyuan
 	fi
 	ln -s ~/git/dotfiles/prettierrc.json ~/.prettierrc.json
 	if [ -L ~/.alacritty.yml]; then
-		mv ~/.alacritty.yml ~/.alacritty.yml.prephorust
+		mv ~/.alacritty.yml ~/.alacritty.yml.premngyuan
 	fi
 	ln -s ~/git/dotfiles/alacritty.yml ~/.alacritty.yml
 
