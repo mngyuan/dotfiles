@@ -4,16 +4,14 @@
 
 part_one () {
 	if hash apt-get 2>/dev/null; then
-		# neovim
-		sudo add-apt-repository -y ppa:neovim-ppa/unstable
-		# tmux
-		sudo add-apt-repository -y ppa:pi-rho/dev
+		# neovim (more recent versions)
+		sudo add-apt-repository ppa:neovim-ppa/stable
 		sudo apt-get update
 
 		sudo apt-get install --assume-yes git curl vim tmux autojump htop cmake cgdb xclip zsh
 		sudo apt-get install --assume-yes neovim python-dev python-pip python3-dev python3-pip
+		sudo apt-get install --assume-yes nodejs
 		sudo apt-get install -y python-software-properties software-properties-common
-		sudo apt-get install -y tmux=2.0-1~ppa1~t
 	fi
 	mkdir ~/git
 	if [ -d ~/git/dotfiles ]; then
