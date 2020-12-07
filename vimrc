@@ -17,7 +17,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 " git, inside vim, if you can remember the commands
 Plug 'tpope/vim-fugitive'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install() } }
 " javascript type checking
 Plug 'facebook/vim-flow'
 " javascript coloring
@@ -30,6 +30,10 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
 " Typescript + JSX
 Plug 'peitalin/vim-jsx-typescript'
+" typescript coloring, doesn't work well with react arrow function props
+" Plug 'HerringtonDarkholme/yats.vim'
+" Format strings (doesn't work)
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " YAML
 Plug 'stephpy/vim-yaml'
 " Load language plugins on demand
@@ -326,7 +330,6 @@ let g:coc_global_extensions = [
       \'coc-tsserver',
       \'coc-html',
       \'coc-css',
-      \'coc-eslint',
       \'coc-prettier',
       \'coc-highlight',
       \'coc-yaml'
@@ -336,7 +339,8 @@ call coc#config('coc.preferences.formatOnSaveFiletypes', [
     \"markdown",
     \"javascript",
     \"json",
-    \"typescript"
+    \"typescript",
+    \"typescriptreact",
 \])
 
 "****** COC SETTINGS ******
