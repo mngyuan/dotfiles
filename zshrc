@@ -107,6 +107,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
     colorize
     cp
     git
+    heroku
     osx
     sublime
     tmux
