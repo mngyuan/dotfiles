@@ -338,6 +338,7 @@ call coc#config('coc.preferences.formatOnSaveFiletypes', [
     \"css",
     \"markdown",
     \"javascript",
+    \"javascriptreact",
     \"json",
     \"typescript",
     \"typescriptreact",
