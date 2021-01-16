@@ -332,7 +332,8 @@ let g:coc_global_extensions = [
       \'coc-css',
       \'coc-prettier',
       \'coc-highlight',
-      \'coc-yaml'
+      \'coc-yaml',
+      \'coc-pyright'
 \]
 call coc#config('coc.preferences.formatOnSaveFiletypes', [
     \"css",
