@@ -162,6 +162,7 @@ nnoremap π :CtrlPBuffer<CR>
 
 "***** BASIC VIM SETTINGS *****
 set laststatus=2		" always show statusline
+set title				" let vim set window title
 
 set backspace=indent,eol,start	" allow backspacing over everything
 
