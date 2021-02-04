@@ -47,7 +47,7 @@ part_one () {
 
 	# set up oh-my-zsh and extra zsh stuff
 	# this will open a new shell, zsh, so the remainder of the commands must be run seperately
-	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 
@@ -86,14 +86,22 @@ part_two() {
 		mv ~/.zshenv ~/.zshenv.premngyuan
 	fi
 	ln -s ~/git/dotfiles/zshenv ~/.zshenv
+	if [ -L ~/.zprofile ]; then
+		mv ~/.zprofile ~/.zprofile.premngyuan
+	fi
+	ln -s ~/git/dotfiles/zprofile ~/.zprofile
 	if [ -L ~/.prettierrc.json ]; then
 		mv ~/.prettierrc.json ~/.prettierrc.json.premngyuan
 	fi
 	ln -s ~/git/dotfiles/prettierrc.json ~/.prettierrc.json
-	if [ -L ~/.alacritty.yml]; then
+	if [ -L ~/.alacritty.yml ]; then
 		mv ~/.alacritty.yml ~/.alacritty.yml.premngyuan
 	fi
 	ln -s ~/git/dotfiles/alacritty.yml ~/.alacritty.yml
+	if [ -L ~/.hammerspoon/init.lua ]; then
+		mv ~/.hammerspoon/init.lua ~/.hammerspoon/init.lua.premngyuan
+	fi
+	ln -s ~/git/dotfiles/hammerspoon_init.lua ~/.hammerspoon/init.lua
 
 
 	# get git helpers
@@ -112,7 +120,7 @@ part_two() {
 		defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 		defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 		# get brew
-		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 		brew doctor
 		# for compiling YCM
 		brew install cmake
@@ -144,7 +152,9 @@ part_two() {
 		# from vim8 with python3
 		brew install vim
 		# forget iTerm2
-		brew cask install alacritty
+		brew install --cask alacritty
+		# for window tiling
+		brew install --cask hammerspoon
 	fi
 
 
