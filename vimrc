@@ -160,6 +160,25 @@ vmap <leader>a/ :Tabularize / \/\/<CR>
 " buffer listing with ctrlp <M-p>
 nnoremap π :CtrlPBuffer<CR>
 
+" ***** CHEAT SHEET *****
+" preparing for eventual printing or transfer to desktop background
+
+" FOLDING:
+" zf          create fold
+" za          toggle fold
+"
+" NAVIGATION:
+" gg          top of file
+" G           bottom of file
+"             jump to next occurence of ?
+"             jump to end of block
+"             jump to start of block
+"
+" EDITING:
+" cit         change within current HTML/jsx tag
+" ci<?>       change within ? characters, like [] {} ()
+
+
 "***** BASIC VIM SETTINGS *****
 set laststatus=2		" always show statusline
 set title				" let vim set window title
@@ -230,6 +249,21 @@ set tabstop=4
 
 " jump to last position on file open
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\""
+
+" save folds automatically on close and load on open
+" https://vi.stackexchange.com/a/13874
+augroup AutoSaveGroup
+  autocmd!
+  " view files are about 500 bytes
+  " bufleave but not bufwinleave captures closing 2nd tab
+  " nested is needed by bufwrite* (if triggered via other autocmd)
+  " BufHidden for compatibility with `set hidden`
+  autocmd BufWinLeave,BufLeave,BufWritePost,BufHidden,QuitPre ?* nested silent! mkview!
+  autocmd BufWinEnter ?* silent! loadview
+augroup end
+
+set viewoptions=folds,cursor
+set sessionoptions=folds
 
 "***** FONT AND COLOR *****
 "Credit joshdick
