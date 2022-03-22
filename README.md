@@ -1,20 +1,42 @@
-Kevin Lee's dotfiles
-===========
-My dotfiles + a collection of scripts I've made that may or may not be useful. Currently they're being brushed up, but they should all do their intended function.
+# Kevin Lee's dotfiles
 
-Running [makeMyselfAtHome.sh](makeMyselfAtHome.sh) will make your terminal environment basically mine: symlink vimrc, bash_profile, zshenv + zshrc, tmux.conf, and setup a ~/bin folder with necessary tools.
+![Screenshot of terminal setup](screenshot.png)
 
-scripts/
----
-### calc.py
-A weighted grade calculator, using grades entered into a .txt file. Calculate what score is needed to get a desired grade.
+Personal configuration files. I work mostly on frontend web development and these dotfiles are meant to be roughly cross platform compatible with Linux i.e. raspbian and Linux Mint.
 
-### music.py and id3.py
-music.py formats all the files in a directory from ```Title - Artist.mp3``` to ```Artist - Title.mp3```, which was useful after the great Spotify HTML5 .mp3 disaster of '13.
-id3.py uses the eyed3 module to add Artist and Song Name information into mp3 files' ID3 tags, based on their naming as ```Artist - Title.mp3```.
+## Terminal
 
-### link.py
-Changes raw links embedded in HTML into Google Doc Spreadsheet formulas, for easy copypasta.
+Terminal emulator: [alacritty](https://github.com/alacritty/alacritty)
 
-### txtconvert.py
-Converts from CRLF to LF and vice versa.
+- text based configuration
+- decently fast
+- decent color support
+
+## Shell
+
+zsh with [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
+
+- easy to configure
+- more widely available and less dogmatic than fish
+
+[tmux](https://github.com/tmux/tmux/)
+
+- [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) for session restore
+  - somewhat annoying incompatiblility with changing cwd on buffer open in vim with session restoration
+
+## Editor
+
+[Neovim](https://github.com/neovim/neovim) / Vim
+
+- [coc.nvim](https://github.com/neoclide/coc.nvim) for LSP, completions, formatting
+- [prettier](https://github.com/prettier/prettier) for JS, TS, JSX, HTML, CSS formatting
+
+## MacOS
+
+[brew](https://github.com/Homebrew/brew) for package management
+
+[Hammerspoon](https://github.com/Hammerspoon/hammerspoon) for window tiling
+
+# makeMyselfAtHome.sh
+
+For setting up new machines, [makeMyselfAtHome.sh](makeMyselfAtHome.sh) symlinks profile, conf, and rc files, and setup a ~/bin folder with necessary tools. Should non-destructively leave original files intact.
