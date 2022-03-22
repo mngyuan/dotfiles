@@ -1,6 +1,6 @@
 #!/bin/bash
 # requires git to exist
-# symlinks vimrc, bash_profile, tmux_conf
+# symlinks vimrc, zshrc, tmux_conf
 
 part_one () {
 	if hash apt-get 2>/dev/null; then
@@ -71,7 +71,6 @@ part_two() {
 		mv ~/.tmux.conf ~/.tmux.conf.premngyuan
 	fi
 	ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
-	echo -e "\n# KL\nsource ~/git/dotfiles/bash_profile" >> ~/.bash_profile
 	if [ -L ~/.vimrc ]; then
 		mv ~/.vimrc ~/.vimrc.premngyuan
 	fi
