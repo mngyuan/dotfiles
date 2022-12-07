@@ -69,6 +69,8 @@ Plug 'tpope/vim-surround'
 " multi-entry selection UI for LSP
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" AI enabled suggests
+Plug 'github/copilot.vim'
 " fav colors
 Plug 'mhartington/oceanic-next'
 Plug 'tomasr/molokai'

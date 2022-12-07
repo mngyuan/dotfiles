@@ -109,7 +109,7 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
     git
     heroku
     macos
-    sublime
+    rbenv
     tmux
     tmuxinator
     zsh-autosuggestions
