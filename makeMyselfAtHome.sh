@@ -52,8 +52,8 @@ part_one () {
 
 
 part_two() {
-	git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-	git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 	# set up extra vim stuff
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -93,14 +93,16 @@ part_two() {
 		mv ~/.prettierrc.json ~/.prettierrc.json.premngyuan
 	fi
 	ln -s ~/git/dotfiles/prettierrc.json ~/.prettierrc.json
-	if [ -L ~/.alacritty.yml ]; then
-		mv ~/.alacritty.yml ~/.alacritty.yml.premngyuan
+	if [[ "$(uname)" == Darwin* ]]; then
+		if [ -L ~/.alacritty.yml ]; then
+			mv ~/.alacritty.yml ~/.alacritty.yml.premngyuan
+		fi
+		ln -s ~/git/dotfiles/alacritty.yml ~/.alacritty.yml
+		if [ -L ~/.hammerspoon/init.lua ]; then
+			mv ~/.hammerspoon/init.lua ~/.hammerspoon/init.lua.premngyuan
+		fi
+		ln -s ~/git/dotfiles/hammerspoon_init.lua ~/.hammerspoon/init.lua
 	fi
-	ln -s ~/git/dotfiles/alacritty.yml ~/.alacritty.yml
-	if [ -L ~/.hammerspoon/init.lua ]; then
-		mv ~/.hammerspoon/init.lua ~/.hammerspoon/init.lua.premngyuan
-	fi
-	ln -s ~/git/dotfiles/hammerspoon_init.lua ~/.hammerspoon/init.lua
 
 
 	# get git helpers
@@ -159,9 +161,11 @@ part_two() {
 
 	echo "************** INSTALL COMPLETE **************"
 	echo "you're also going to want:"
-	echo "Karabiner Elements for 87U numlock / to remap capslock"
-	echo "Native Display Brightness"
-	echo "Chrome / HammerSpoon / Google Drive / Adobe CC"
+	if [[ "$(uname)" == Darwin* ]]; then
+		echo "Karabiner Elements for 87U numlock / to remap capslock"
+		echo "Native Display Brightness"
+		echo "Chrome / HammerSpoon / Google Drive / Adobe CC"
+	fi
 	echo "~/git/dotfiles/terminfo"
 }
 
