@@ -123,8 +123,6 @@ part_two() {
 		# get brew
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 		brew doctor
-		# for compiling YCM
-		brew install cmake
 		# for better git
 		brew install git
 		# node
@@ -143,19 +141,17 @@ part_two() {
 		# for battery in tmux statusline
 		brew tap Goles/battery
 		brew install battery
-		# for glorious debugging, except gdb on mac sucks
-		brew install cgdb
 		# nvim has THREADS welcome to 2004
 		brew install neovim
 		brew install yarn
-		# for deoplete
-		npm -g install neovim
 		# from vim8 with python3
 		brew install vim
 		# forget iTerm2
 		brew install --cask alacritty
 		# for window tiling
 		brew install --cask hammerspoon
+		# for key remapping
+		brew install --cask karabiner-elements
 	fi
 
 
