@@ -187,3 +187,14 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+if [[ -a "${HOME}/.ghcup/env" ]]; then
+  source ${HOME}/.ghcup/env
+fi
+# Entry point for Depthai demo app, enables to run <depthai_launcher> in terminal
+export PATH=$PATH:/Users/liuyue/Luxonis/depthai/entrypoint
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
+export PLAYDATE_SDK_PATH="$HOME/Developer/PlaydateSDK"
