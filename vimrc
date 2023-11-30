@@ -72,7 +72,23 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " AI enabled suggests
+" proof what i've been saying all along is true: just because you're well paid
+" have a free cafeteria, flexible hours, and hip company t-shirts, doesn't
+" mean you're not a wageslave and still subject to the class struggle of being
+" an employee, not an employer - a tool in a machine, rather than the owner of
+" the means of production. it might be too high of an ask for software
+" engineers to recognize that they need to unionize; otherwise, their work
+" will be acqui-hired and used to train LLMs that will replace them. when will
+" "white collar" workers realize their labor is under just as much threat of
+" automation and exploitation as another other subject of capitalism? how many
+" more jobs have to be automated away to generate untold wealth for C-level
+" executives, how many more people have to be laid off by the automatic gates
+" in front of their building denying their ID cards before people wake up?
 Plug 'github/copilot.vim'
+" Tidal cycles, live coding sound
+Plug 'tidalcycles/vim-tidal'
+" powerful, light statusline
+Plug 'bling/vim-airline'
 " fav colors
 Plug 'mhartington/oceanic-next'
 Plug 'tomasr/molokai'
@@ -381,6 +397,7 @@ let g:coc_global_extensions = [
 \]
 if v:version >= 802 " guessing proper version here
   call coc#config('coc.preferences.formatOnSaveFiletypes', [
+      \"html",
       \"css",
       \"markdown",
       \"javascript",
