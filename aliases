@@ -49,7 +49,7 @@ alias hgclean="hg update -C ."
 
 alias codegrep="grep \
   --color=auto \
-  --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules}\
+  --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,build,.next}\
   --ignore-case\
   --line-number\
   --binary-files=without-match\
@@ -59,7 +59,7 @@ alias codegrep="grep \
 alias jsgrep="grep \
   --color=auto \
   --exclude=\*.{log,lock} \
-  --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,build} \
+  --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,build,.next} \
   --ignore-case\
   --line-number\
   --binary-files=without-match\
