@@ -95,10 +95,10 @@ part_two() {
 	fi
 	ln -s ~/git/dotfiles/prettierrc.json ~/.prettierrc.json
 	if [[ "$(uname)" == Darwin* ]]; then
-		if [ -L ~/.alacritty.yml ]; then
-			mv ~/.alacritty.yml ~/.alacritty.yml.premngyuan
+		if [ -L ~/.alacritty.toml ]; then
+			mv ~/.alacritty.toml ~/.alacritty.toml.premngyuan
 		fi
-		ln -s ~/git/dotfiles/alacritty.yml ~/.alacritty.yml
+		ln -s ~/git/dotfiles/alacritty.toml ~/.alacritty.toml
 		if [ -L ~/.hammerspoon/init.lua ]; then
 			mv ~/.hammerspoon/init.lua ~/.hammerspoon/init.lua.premngyuan
 		fi
