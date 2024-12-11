@@ -76,8 +76,8 @@ part_two() {
 		mv ~/.vimrc ~/.vimrc.premngyuan
 	fi
 	ln -s ~/git/dotfiles/vimrc ~/.vimrc
-	mkdir -p ~/.config/nvim
-	ln -s ~/git/dotfiles/init.vim ~/.config/nvim/init.vim
+	mkdir -p ~/.config
+	ln -s ~/git/dotfiles/nvim ~/.config/nvim
 	if [ -L ~/.zshrc ]; then
 		mv ~/.zshrc ~/.zshrc.premngyuan
 	fi
