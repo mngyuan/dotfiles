@@ -161,6 +161,10 @@ vim.opt.scrolloff = 10
 --  See `:help vim.keymap.set()`
 --  mngyuan
 vim.keymap.set("n", ";", ":")
+vim.keymap.set("n", "<C-c>", '"+Y$')
+vim.keymap.set("v", "<C-c>", '"+y')
+vim.keymap.set("n", "<C-x>", '"+dd$')
+vim.keymap.set("v", "<C-x>", '"+d')
 --  endmngyuan
 
 -- Clear highlights on search when pressing <Esc> in normal mode
