@@ -144,6 +144,7 @@ part_two() {
 		brew install battery
 		# nvim has THREADS welcome to 2004
 		brew install neovim
+		brew install ripgrep # for telescope.nvim
 		brew install yarn
 		# from vim8 with python3
 		brew install vim
