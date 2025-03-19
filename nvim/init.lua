@@ -146,7 +146,12 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = {
+	--tab = "» ",
+	tab = "  ",
+	trail = "·",
+	nbsp = "␣",
+}
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -930,6 +935,27 @@ require("lazy").setup({
 		},
 	},
 
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		---@module "ibl"
+		---@type ibl.config
+		opts = {},
+		config = function()
+			local highlight = {
+				"CursorColumn",
+				"Whitespace",
+			}
+			require("ibl").setup({
+				indent = { highlight = highlight, char = "" },
+				whitespace = {
+					highlight = highlight,
+					remove_blankline_trail = false,
+				},
+				scope = { enabled = false },
+			})
+		end,
+	},
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()
