@@ -705,6 +705,9 @@ require("lazy").setup({
 					end,
 				},
 			})
+
+			-- Manually configure sourcekit-lsp (not managed by Mason, installed via Swift toolchain)
+			vim.lsp.enable("sourcekit")
 		end,
 	},
 
