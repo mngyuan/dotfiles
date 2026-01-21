@@ -40,6 +40,7 @@ alias tmux="tmux -2"
 #alias vim="nvim"
 
 # for neovim
+export PATH="$PATH:/opt/nvim/"
 # if [[ "$(uname)" != Darwin* ]] && [[ -e "/etc/redhat-release" ]]; then
 #   export VIMRUNTIME=/usr/share/vim/vim74
 # else
