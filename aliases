@@ -6,6 +6,8 @@ export ZDOTDIR=$HOME
 export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$PATH:$HOME/.bin:$HOME/bin:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+# add cargo to PATH
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # add linuxbrew to path
 export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
