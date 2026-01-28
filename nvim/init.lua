@@ -247,6 +247,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	"roxma/vim-tmux-clipboard", -- Sync vim clipboard with tmux paste buffer
 
 	-- NOTE: Plugins can also be added by using a table,
 	-- with the first argument being the link and the following
@@ -894,10 +895,57 @@ require("lazy").setup({
 		"folke/tokyonight.nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		init = function()
-			-- Load the colorscheme here.
-			-- Like many other themes, this one has different styles, and you could load
-			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
+			-- Seasonal light/dark calculation based on week of year and hour
+			-- Tuned for ~42°N latitude (avg of Tokyo, SF, London)
+			local function is_dark_by_sun()
+				local week = tonumber(os.date("%U"))
+				local hour = tonumber(os.date("%H"))
+				local light_start, light_end
+				if week < 11 then
+					-- Late winter (Jan-early Mar): sunrise ~7:15am, sunset ~5pm
+					light_start, light_end = 7, 18
+				elseif week < 19 then
+					-- Spring (mid Mar-early May): sunrise ~6am, sunset ~7pm
+					light_start, light_end = 6, 19
+				elseif week < 33 then
+					-- Summer (mid May-mid Aug): sunrise ~5:30am, sunset ~8:30pm
+					light_start, light_end = 6, 21
+				elseif week < 41 then
+					-- Fall (mid Aug-early Oct): sunrise ~6:30am, sunset ~7pm
+					light_start, light_end = 7, 19
+				else
+					-- Early winter (mid Oct-Dec): sunrise ~7:30am, sunset ~5pm
+					light_start, light_end = 7, 18
+				end
+				local is_light = hour >= light_start and hour < light_end
+				return not is_light
+			end
+
+			-- Cross-platform system dark mode detection with seasonal fallback
+			local function is_dark_mode()
+				if vim.fn.has("mac") == 1 then
+					local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
+					local result = handle:read("*a")
+					handle:close()
+					return result:match("Dark") ~= nil
+				else
+					-- Linux: try GNOME/GTK
+					local handle = io.popen("gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null")
+					local result = handle:read("*a")
+					handle:close()
+					if result:match("prefer%-dark") then
+						return true
+					end
+					if result:match("prefer%-light") then
+						return false
+					end
+					-- Fallback to seasonal calculation
+					return is_dark_by_sun()
+				end
+			end
+
+			local theme = is_dark_mode() and "tokyonight-night" or "tokyonight-day"
+			vim.cmd.colorscheme(theme)
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")
