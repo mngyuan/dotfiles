@@ -165,6 +165,7 @@ part_two() {
 		echo "Chrome / HammerSpoon / Google Drive / Adobe CC"
 	fi
 	echo "~/git/dotfiles/terminfo"
+	echo "npm install -g prettier"
 }
 
 part_one
