@@ -1,2 +1,2 @@
 source ~/git/dotfiles/aliases
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
