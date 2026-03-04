@@ -28,8 +28,8 @@ zsh with [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
 
 [Neovim](https://github.com/neovim/neovim) / Vim
 
-- [coc.nvim](https://github.com/neoclide/coc.nvim) for LSP, completions, formatting
-- [prettier](https://github.com/prettier/prettier) for JS, TS, JSX, HTML, CSS formatting
+- Based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
+- Lazy, Mason, and Conform handle plugins, LSP, and formatting
 
 ## MacOS
 

@@ -94,6 +94,10 @@ part_two() {
 		mv ~/.prettierrc.json ~/.prettierrc.json.premngyuan
 	fi
 	ln -s ~/git/dotfiles/prettierrc.json ~/.prettierrc.json
+	if [ -L ~/.biome.json ]; then
+		mv ~/.biome.json ~/.biome.json.premngyuan
+	fi
+	ln -s ~/git/dotfiles/biome.json ~/.biome.json
 	if [[ "$(uname)" == Darwin* ]]; then
 		if [ -L ~/.alacritty.toml ]; then
 			mv ~/.alacritty.toml ~/.alacritty.toml.premngyuan
@@ -165,7 +169,6 @@ part_two() {
 		echo "Chrome / HammerSpoon / Google Drive / Adobe CC"
 	fi
 	echo "~/git/dotfiles/terminfo"
-	echo "npm install -g prettier"
 }
 
 part_one
