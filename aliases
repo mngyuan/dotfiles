@@ -83,6 +83,10 @@ alias rngrep="grep \
   --recursive\
 "
 
+gitgrep() {
+  git --no-pager log -G "$1" --patch --color=always | grep -E -A 2 "commit [0-9a-f]+|^Author|^Date|$1" --color=never | GREP_COLOR='43' grep -E --color=always "$1|$"
+}
+
 # =========== fb ===========
 if [ -d ~/../engshare ]; then
   export ADMIN_SCRIPTS=~/../engshare/admin/scripts
