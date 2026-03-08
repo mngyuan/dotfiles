@@ -59,7 +59,8 @@ alias jsgrep="rg -i -g '!*.log' -g '!*.lock'"
 alias rngrep="rg -i -g '!*.log' -g '!*.lock' -g '!android/' -g '!ios/'"
 # search through git history, showing commit info and highlighting matches
 gitgrep() {
-  git --no-pager log -G "$1" --patch --color=always | grep -E -A 2 "commit [0-9a-f]+|^Author|^Date|$1" --color=never | GREP_COLOR='43' grep -E --color=always "$1|$"
+  local a="(\x1b\[[0-9;]*m)*"
+  git --no-pager log -G "$1" --patch --color=always | grep -E -A 4 "${a}commit [0-9a-f]+|^${a}Author|^${a}Date|^${a}diff --git|^${a}new file mode |@@.*@@$|$1" --color=never | GREP_COLOR='43' grep -E --color=always "$1|$"
 }
 
 # =========== fb ===========
