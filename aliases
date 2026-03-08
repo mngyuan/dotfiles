@@ -53,36 +53,11 @@ alias sl="hg ssl"
 alias slup="hg-sl-up"
 alias hgclean="hg update -C ."
 
-alias codegrep="grep \
-  --color=auto \
-  --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,build,.next}\
-  --ignore-case\
-  --line-number\
-  --binary-files=without-match\
-  --extended-regexp\
-  --recursive\
-"
-alias jsgrep="grep \
-  --color=auto \
-  --exclude=\*.{log,lock} \
-  --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,build,.next} \
-  --ignore-case\
-  --line-number\
-  --binary-files=without-match\
-  --extended-regexp\
-  --recursive\
-"
-alias rngrep="grep \
-  --color=auto \
-  --exclude=\*.{log,lock} \
-  --exclude-dir={.bzr,CVS,.git,.hg,.svn,node_modules,build,android,ios} \
-  --ignore-case\
-  --line-number\
-  --binary-files=without-match\
-  --extended-regexp\
-  --recursive\
-"
-
+# rg respects .gitignore, so node_modules, build, .next, etc. are auto-excluded
+alias codegrep="rg -i"
+alias jsgrep="rg -i -g '!*.log' -g '!*.lock'"
+alias rngrep="rg -i -g '!*.log' -g '!*.lock' -g '!android/' -g '!ios/'"
+# search through git history, showing commit info and highlighting matches
 gitgrep() {
   git --no-pager log -G "$1" --patch --color=always | grep -E -A 2 "commit [0-9a-f]+|^Author|^Date|$1" --color=never | GREP_COLOR='43' grep -E --color=always "$1|$"
 }
