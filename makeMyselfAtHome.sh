@@ -149,6 +149,7 @@ part_two() {
 		# nvim has THREADS welcome to 2004
 		brew install neovim
 		brew install ripgrep # for telescope.nvim
+		brew install fzf # for tmux session switching
 		brew install yarn
 		# from vim8 with python3
 		brew install vim
