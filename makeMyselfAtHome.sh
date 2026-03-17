@@ -150,6 +150,7 @@ part_two() {
 		brew install neovim
 		brew install ripgrep # for telescope.nvim
 		brew install fzf # for tmux session switching
+		brew install tree-sitter tree-sitter-cli # for nvim
 		brew install yarn
 		# from vim8 with python3
 		brew install vim
