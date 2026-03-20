@@ -642,6 +642,12 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
 
+        -- Swift LSP — ships with Xcode, not installed by Mason
+        sourcekit = {
+          cmd = { 'sourcekit-lsp' },
+          filetypes = { 'swift', 'objc', 'objcpp', 'c', 'cpp' },
+        },
+
         stylua = {}, -- Used to format Lua code
 
         -- Special Lua Config, as recommended by neovim help docs
@@ -681,7 +687,11 @@ require('lazy').setup({
       --    :Mason
       --
       -- You can press `g?` for help in this menu.
-      local ensure_installed = vim.tbl_keys(servers or {})
+      -- Servers not managed by Mason (installed externally)
+      local mason_exclude = { 'sourcekit' }
+      local ensure_installed = vim.tbl_filter(function(name)
+        return not vim.tbl_contains(mason_exclude, name)
+      end, vim.tbl_keys(servers or {}))
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
       })
