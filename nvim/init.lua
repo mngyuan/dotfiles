@@ -248,6 +248,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.hl.on_yank() end,
 })
 
+-- Sync yanked text to tmux paste buffer (async, replaces vim-tmux-clipboard)
+if vim.env.TMUX and vim.env.TMUX ~= '' then
+  vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Sync yank to tmux paste buffer',
+    group = vim.api.nvim_create_augroup('tmux-clipboard-sync', { clear = true }),
+    callback = function()
+      local contents = table.concat(vim.v.event.regcontents, '\n')
+      local job = vim.fn.jobstart({ 'tmux', 'loadb', '-' }, { stdin = 'pipe' })
+      vim.fn.chansend(job, contents)
+      vim.fn.chanclose(job, 'stdin')
+    end,
+  })
+end
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -275,7 +289,7 @@ rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
   { 'NMAC427/guess-indent.nvim', opts = {} },
-  'roxma/vim-tmux-clipboard', -- Sync vim clipboard with tmux paste buffer
+  -- Tmux clipboard sync is handled by the TextYankPost autocmd above (async)
 
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
@@ -689,9 +703,7 @@ require('lazy').setup({
       -- You can press `g?` for help in this menu.
       -- Servers not managed by Mason (installed externally)
       local mason_exclude = { 'sourcekit' }
-      local ensure_installed = vim.tbl_filter(function(name)
-        return not vim.tbl_contains(mason_exclude, name)
-      end, vim.tbl_keys(servers or {}))
+      local ensure_installed = vim.tbl_filter(function(name) return not vim.tbl_contains(mason_exclude, name) end, vim.tbl_keys(servers or {}))
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
         'biome',
@@ -1067,7 +1079,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
