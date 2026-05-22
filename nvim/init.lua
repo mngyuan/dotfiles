@@ -248,16 +248,33 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.hl.on_yank() end,
 })
 
--- Sync yanked text to tmux paste buffer (async, replaces vim-tmux-clipboard)
+-- Sync vim clipboard with tmux paste buffer (replaces vim-tmux-clipboard)
 if vim.env.TMUX and vim.env.TMUX ~= '' then
   vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Sync yank to tmux paste buffer',
-    group = vim.api.nvim_create_augroup('tmux-clipboard-sync', { clear = true }),
+    group = vim.api.nvim_create_augroup('tmux-clipboard-sync-out', { clear = true }),
     callback = function()
       local contents = table.concat(vim.v.event.regcontents, '\n')
-      local job = vim.fn.jobstart({ 'tmux', 'loadb', '-' }, { stdin = 'pipe' })
+      local job = vim.fn.jobstart({ 'tmux', 'loadb', '-b', 'vim-clipboard', '-' }, { stdin = 'pipe' })
       vim.fn.chansend(job, contents)
       vim.fn.chanclose(job, 'stdin')
+    end,
+  })
+  vim.api.nvim_create_autocmd('FocusGained', {
+    desc = 'Sync tmux paste buffer to vim registers on focus',
+    group = vim.api.nvim_create_augroup('tmux-clipboard-sync-in', { clear = true }),
+    callback = function()
+      vim.fn.jobstart({ 'tmux', 'saveb', '-b', 'vim-clipboard', '-' }, {
+        stdout_buffered = true,
+        on_stdout = function(_, data)
+          if data and #data > 0 then
+            local content = table.concat(data, '\n'):gsub('\n$', '')
+            if content ~= '' then
+              vim.fn.setreg('"', content)
+            end
+          end
+        end,
+      })
     end,
   })
 end
