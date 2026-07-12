@@ -52,18 +52,9 @@ part_one () {
 
 
 part_two() {
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-	# set up extra vim stuff
-	mkdir ~/.vimundo
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	vim +PlugInstall +qall
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	nvim +PlugInstall +UpdateRemotePlugins +qall
-	nvim +"CocInstall coc-json coc-tsserver coc-html coc-css coc-eslint coc-prettier coc-yaml"
 	# set up extra tmux stuff
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -117,7 +108,7 @@ part_two() {
 	cd ~/bin && curl -X GET https://raw.githubusercontent.com/holman/spark/master/spark -o spark
 	cd ~/bin && curl https://raw.githubusercontent.com/felipec/git-remote-hg/master/git-remote-hg -o git-remote-hg
 	chmod +x ~/bin/*
-
+	
 
 	if [[ "$(uname)" == Darwin* ]]; then
 		# make keys repeat properly
@@ -127,6 +118,8 @@ part_two() {
 		defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 		# get brew
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+		exec zsh
 		brew doctor
 		# for better git
 		brew install git
@@ -144,6 +137,7 @@ part_two() {
 		# for tmux
 		brew install tmux
 		# for battery in tmux statusline
+		brew trust goles/battery
 		brew tap Goles/battery
 		brew install battery
 		# nvim has THREADS welcome to 2004
@@ -160,15 +154,30 @@ part_two() {
 		brew install --cask hammerspoon
 		# for key remapping
 		brew install --cask karabiner-elements
+		# git delta
+		brew install git-delta
+		git config --global core.pager delta
+		git config --global interactive.diffFilter 'delta --color-only'
+		git config --global delta.navigate true
+		git config --global delta.dark true  # or `delta.light true`, or omit for auto-detection
+		git config --global merge.conflictStyle zdiff3
 	fi
 
+	# set up extra vim stuff
+	mkdir ~/.vimundo
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	vim +PlugInstall +qall
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	nvim 
 
 	echo "************** INSTALL COMPLETE **************"
 	echo "you're also going to want:"
 	if [[ "$(uname)" == Darwin* ]]; then
-		echo "Karabiner Elements for 87U numlock / to remap capslock"
+		echo "Karabiner Elements remap capslock"
 		echo "Native Display Brightness"
-		echo "Chrome / HammerSpoon / Google Drive / Adobe CC"
+		echo "Zen / Google Drive / Figma"
 	fi
 	echo "~/git/dotfiles/terminfo"
 }
