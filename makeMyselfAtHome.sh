@@ -62,7 +62,8 @@ part_two() {
 	if [ -L ~/.tmux.conf ]; then
 		mv ~/.tmux.conf ~/.tmux.conf.premngyuan
 	fi
-	ln -s ~/git/dotfiles/tmux.conf ~/.tmux.conf
+	mkdir -p ~/.config/tmux
+	ln -s ~/git/dotfiles/tmux.conf ~/.config/tmux/tmux.conf
 	if [ -L ~/.vimrc ]; then
 		mv ~/.vimrc ~/.vimrc.premngyuan
 	fi
@@ -93,7 +94,8 @@ part_two() {
 		if [ -L ~/.alacritty.toml ]; then
 			mv ~/.alacritty.toml ~/.alacritty.toml.premngyuan
 		fi
-		ln -s ~/git/dotfiles/alacritty.toml ~/.alacritty.toml
+		mkdir -p ~/.config/alacritty
+		ln -s ~/git/dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml
 		if [ -L ~/.hammerspoon/init.lua ]; then
 			mv ~/.hammerspoon/init.lua ~/.hammerspoon/init.lua.premngyuan
 		fi
