@@ -258,19 +258,24 @@ if vim.env.TMUX and vim.env.TMUX ~= '' then
       local job = vim.fn.jobstart({ 'tmux', 'loadb', '-b', 'vim-clipboard', '-' }, { stdin = 'pipe' })
       vim.fn.chansend(job, contents)
       vim.fn.chanclose(job, 'stdin')
+      local type_job = vim.fn.jobstart({ 'tmux', 'loadb', '-b', 'vim-clipboard-type', '-' }, { stdin = 'pipe' })
+      vim.fn.chansend(type_job, vim.v.event.regtype)
+      vim.fn.chanclose(type_job, 'stdin')
     end,
   })
   vim.api.nvim_create_autocmd('FocusGained', {
     desc = 'Sync tmux paste buffer to vim registers on focus',
     group = vim.api.nvim_create_augroup('tmux-clipboard-sync-in', { clear = true }),
     callback = function()
+      local regtype = vim.fn.system({ 'tmux', 'saveb', '-b', 'vim-clipboard-type', '-' })
+      if vim.v.shell_error ~= 0 then regtype = 'v' end
       vim.fn.jobstart({ 'tmux', 'saveb', '-b', 'vim-clipboard', '-' }, {
         stdout_buffered = true,
         on_stdout = function(_, data)
           if data and #data > 0 then
             local content = table.concat(data, '\n'):gsub('\n$', '')
             if content ~= '' then
-              vim.fn.setreg('"', content)
+              vim.fn.setreg('"', content, regtype)
             end
           end
         end,
