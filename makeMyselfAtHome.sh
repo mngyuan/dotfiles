@@ -141,7 +141,7 @@ part_two() {
 		# for battery in tmux statusline
 		brew trust goles/battery
 		brew tap Goles/battery
-		brew install battery
+		brew install goles/battery/battery
 		# nvim has THREADS welcome to 2004
 		brew install neovim
 		brew install ripgrep # for telescope.nvim
