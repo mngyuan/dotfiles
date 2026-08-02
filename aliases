@@ -40,6 +40,9 @@ fi
 
 alias tmux="tmux -2"
 #alias vim="nvim"
+if [ -f /Applications/Alacritty.app/Contents/MacOS/alacritty ]; then
+  alias alacritty="/Applications/Alacritty.app/Contents/MacOS/alacritty"
+fi
 
 # for neovim
 export PATH="$PATH:/opt/nvim/"
