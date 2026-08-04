@@ -205,6 +205,9 @@ vim.diagnostic.config {
   jump = { float = true },
 }
 
+-- Rounded borders on windows (on hover, etc)
+vim.o.winborder = 'rounded'
+
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -267,16 +270,14 @@ if vim.env.TMUX and vim.env.TMUX ~= '' then
     desc = 'Sync tmux paste buffer to vim registers on focus',
     group = vim.api.nvim_create_augroup('tmux-clipboard-sync-in', { clear = true }),
     callback = function()
-      local regtype = vim.fn.system({ 'tmux', 'saveb', '-b', 'vim-clipboard-type', '-' })
+      local regtype = vim.fn.system { 'tmux', 'saveb', '-b', 'vim-clipboard-type', '-' }
       if vim.v.shell_error ~= 0 then regtype = 'v' end
       vim.fn.jobstart({ 'tmux', 'saveb', '-b', 'vim-clipboard', '-' }, {
         stdout_buffered = true,
         on_stdout = function(_, data)
           if data and #data > 0 then
             local content = table.concat(data, '\n'):gsub('\n$', '')
-            if content ~= '' then
-              vim.fn.setreg('"', content, regtype)
-            end
+            if content ~= '' then vim.fn.setreg('"', content, regtype) end
           end
         end,
       })
@@ -669,7 +670,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
