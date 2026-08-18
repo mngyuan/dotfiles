@@ -678,6 +678,8 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
+        eslint = {},
+        tailwindcss = {},
 
         -- Swift LSP — ships with Xcode, not installed by Mason
         sourcekit = {
@@ -730,6 +732,9 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
         'biome',
+        'prettier',
+        'isort',
+        'black',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
