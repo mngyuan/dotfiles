@@ -680,6 +680,7 @@ require('lazy').setup({
         ts_ls = {},
         eslint = {},
         tailwindcss = {},
+        cssls = {},
 
         -- Swift LSP — ships with Xcode, not installed by Mason
         sourcekit = {
@@ -1064,8 +1065,24 @@ require('lazy').setup({
     branch = 'main',
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     config = function()
-      local parsers =
-        { 'bash', 'c', 'css', 'diff', 'html', 'javascript', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'tsx', 'typescript', 'query', 'vim', 'vimdoc' }
+      local parsers = {
+        'bash',
+        'c',
+        'css',
+        'diff',
+        'html',
+        'javascript',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'python',
+        'tsx',
+        'typescript',
+        'query',
+        'vim',
+        'vimdoc',
+      }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
