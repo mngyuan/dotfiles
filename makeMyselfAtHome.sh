@@ -240,6 +240,7 @@ part_two() {
 			brew doctor
 			# for better git
 			brew_install git
+			brew_install gh
 			# node
 			brew_install node
 			# htop > top  (htop-osx is long gone, plain htop works now)
