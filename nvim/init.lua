@@ -476,6 +476,14 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
       vim.keymap.set('n', '<leader><leader>', function() builtin.buffers { sort_mru = true } end, { desc = '[ ] Find existing buffers' })
+      -- mngyuan: to make hidden files appear
+      vim.keymap.set('n', '<leader>sF', function()
+        builtin.find_files { hidden = true }
+      end, { desc = '[S]earch [F]iles including hidden' })
+      vim.keymap.set('n', '<leader>sG', function()
+        builtin.live_grep { hidden = true }
+      end, { desc = '[S]earch by [G]rep including hidden' })
+      -- endmngyuan
 
       -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
       -- it is better explained there). This allows easily switching between pickers if you prefer using something else!
