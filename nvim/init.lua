@@ -463,6 +463,12 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
 
+      -- Wrap long lines in the preview window
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'TelescopePreviewerLoaded',
+        callback = function() vim.wo.wrap = true end,
+      })
+
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
@@ -477,12 +483,8 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
       vim.keymap.set('n', '<leader><leader>', function() builtin.buffers { sort_mru = true } end, { desc = '[ ] Find existing buffers' })
       -- mngyuan: to make hidden files appear
-      vim.keymap.set('n', '<leader>sF', function()
-        builtin.find_files { hidden = true }
-      end, { desc = '[S]earch [F]iles including hidden' })
-      vim.keymap.set('n', '<leader>sG', function()
-        builtin.live_grep { hidden = true }
-      end, { desc = '[S]earch by [G]rep including hidden' })
+      vim.keymap.set('n', '<leader>sF', function() builtin.find_files { hidden = true } end, { desc = '[S]earch [F]iles including hidden' })
+      vim.keymap.set('n', '<leader>sG', function() builtin.live_grep { hidden = true } end, { desc = '[S]earch by [G]rep including hidden' })
       -- endmngyuan
 
       -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
