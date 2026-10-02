@@ -311,6 +311,7 @@ part_two() {
 	echo "************** INSTALL COMPLETE **************"
 	echo "you're also going to want:"
 	echo "open nvim once to let the plugin manager bootstrap"
+	echo "DejaVu Sans for Powerline / DejaVuSansM Nerd Font"
 	if is_macos; then
 		echo "Karabiner Elements remap capslock"
 		echo "Native Display Brightness"

@@ -1,0 +1,13 @@
+macos-titlebar-style = hidden
+macos-icon = xray
+confirm-close-surface = false
+
+command = /bin/zsh --login -c 'tmux attach || tmux new -s base; exec zsh'
+
+font-size = 13.5
+theme = argonaut
+font-family = "DejaVuSansM Nerd Font"
+font-family = "DejaVu Sans Mono for Powerline"
+
+keybind = shift+enter=text:\x1b\r
+macos-option-as-alt=true
