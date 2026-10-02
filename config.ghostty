@@ -1,5 +1,5 @@
 macos-titlebar-style = hidden
-macos-icon = xray
+macos-icon = retro
 confirm-close-surface = false
 
 command = /bin/zsh --login -c 'tmux attach || tmux new -s base; exec zsh'
