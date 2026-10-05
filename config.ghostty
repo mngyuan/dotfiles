@@ -11,3 +11,9 @@ font-family = "DejaVu Sans Mono for Powerline"
 
 keybind = shift+enter=text:\x1b\r
 macos-option-as-alt=true
+
+# machine-specific overrides, not tracked in dotfiles
+config-file = ?~/.config/ghostty/local.ghostty
+# on British macs with the Karabiner option-3 rule enabled, add in local.ghostty:
+# Karabiner sends option+3 for # (British layout); with option-as-alt it would arrive as alt+3
+# keybind = alt+digit_3=text:#
