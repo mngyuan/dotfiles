@@ -122,7 +122,9 @@ filetype plugin indent on
 nnoremap ; :
 " move visual lines with j,k, but not when using line numbering
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+xnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+xnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 " save, now that i'm using hhkb layout <C> is easier
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
