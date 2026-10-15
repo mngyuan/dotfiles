@@ -181,8 +181,8 @@ vim.keymap.set('v', '<C-x>', '"+d')
 -- mngyuan: don't copy to vim's clipboard when pasting
 vim.keymap.set('v', 'p', '"_dP', { noremap = true })
 -- mngyuan: move visual lines with j,k, but not when using line numbering
-vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 && mode() !=# 'V' ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 && mode() !=# 'V' ? 'gj' : 'j'", { expr = true, silent = true })
 --  endmngyuan
 
 -- Clear highlights on search when pressing <Esc> in normal mode
