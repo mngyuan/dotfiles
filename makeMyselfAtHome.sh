@@ -202,6 +202,7 @@ part_two() {
 	if is_macos; then
 		link "$DOTFILES/alacritty.toml"       "$HOME/.config/alacritty/alacritty.toml"
 		link "$DOTFILES/hammerspoon_init.lua" "$HOME/.hammerspoon/init.lua"
+		link "$DOTFILES/config.ghostty"  "$HOME/.config/ghostty/config.ghostty"
 	fi
 
 	echo "== git helpers =="
@@ -268,8 +269,8 @@ part_two() {
 			brew_install yarn
 			# from vim8 with python3
 			brew_install vim
-			# forget iTerm2
-			brew_cask_install alacritty
+			# forget alacritty
+			brew_cask_install ghostty
 			# for window tiling
 			brew_cask_install hammerspoon
 			# for key remapping
