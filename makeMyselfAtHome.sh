@@ -161,6 +161,20 @@ part_one () {
 		fi
 	fi
 
+	# appended rather than symlinked: ssh config differs per machine
+	if grep -qs AddKeysToAgent "$HOME/.ssh/config"; then
+		skip "AddKeysToAgent already in ~/.ssh/config"
+	else
+		mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
+		cat >> "$HOME/.ssh/config" <<'SSHCONF'
+Host *
+  # add a key to the agent the first time it's used, so the passphrase is only
+  # asked once per agent lifetime (zshrc keeps an agent running)
+  AddKeysToAgent yes
+SSHCONF
+		chmod 600 "$HOME/.ssh/config"
+	fi
+
 	echo "== oh-my-zsh =="
 	# KEEP_ZSHRC stops the installer replacing a .zshrc we're about to symlink,
 	# RUNZSH stops it launching an interactive zsh and killing the rest of this

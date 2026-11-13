@@ -5,6 +5,19 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# ssh logins and some terminals on linux don't get an ssh-agent, so share one
+# persistent agent across shells at a fixed socket. keys get loaded on first use
+# via AddKeysToAgent in ssh_config.
+if [[ -z "$SSH_AUTH_SOCK" && "$(uname)" == "Linux" && -n "$XDG_RUNTIME_DIR" ]]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
+  ssh-add -l >/dev/null 2>&1
+  # exit 2 means no agent answering on the socket (1 just means no keys loaded)
+  if [[ $? -eq 2 ]]; then
+    rm -f "$SSH_AUTH_SOCK"
+    ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+  fi
+fi
+
 # save a shitload of lines
 HISTSIZE=130000 SAVEHIST=130000
 # vi mode
