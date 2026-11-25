@@ -615,6 +615,8 @@ require('lazy').setup({
       { '<leader>sb', function() Snacks.picker.lines() end, desc = 'Buffer Lines' },
       { '<leader>sB', function() Snacks.picker.grep_buffers() end, desc = 'Grep Open Buffers' },
       { '<leader>sg', function() Snacks.picker.grep() end, desc = 'Grep' },
+      { '<leader>sF', function() Snacks.picker.files { hidden = true } end, desc = 'Find Files (including hidden)' },
+      { '<leader>sG', function() Snacks.picker.grep { hidden = true } end, desc = 'Grep (including hidden)' },
       { '<leader>sw', function() Snacks.picker.grep_word() end, desc = 'Visual selection or word', mode = { 'n', 'x' } },
       -- search
       { '<leader>s"', function() Snacks.picker.registers() end, desc = 'Registers' },
@@ -966,8 +968,8 @@ require('lazy').setup({
         css = { 'biome-check' },
         html = { 'biome-check' },
         json = { 'biome-check' },
-        yaml = { 'prettier' },
-        markdown = { 'prettier' },
+        yaml = { 'biome-check' },
+        markdown = { 'prettier' }, -- not a fan of biome's forcing # over ===
         graphql = { 'prettier' },
         python = { 'isort', 'black' },
       },
