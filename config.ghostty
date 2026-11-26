@@ -8,6 +8,7 @@ font-size = 13.5
 theme = argonaut
 font-family = "DejaVuSansM Nerd Font"
 font-family = "DejaVu Sans Mono for Powerline"
+font-thicken = true
 
 keybind = shift+enter=text:\x1b\r
 macos-option-as-alt=true
